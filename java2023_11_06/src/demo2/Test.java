@@ -5,7 +5,9 @@ import demo1.TestDemo1;
 public class Test extends TestDemo1 {
     public void func() {
         System.out.println(super.a);
+        //protected
         //不同包 子类 可访问
+        //不同包 非子类 不可访问
     }
 
     public static void main(String[] args) {
