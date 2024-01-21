@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaSE.iml" filepath="$PROJECT_DIR$/.idea/JavaSE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_10_24/java2023_10_24.iml" filepath="$PROJECT_DIR$/java2023_10_24/java2023_10_24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_10_26/java2023_10_26.iml" filepath="$PROJECT_DIR$/java2023_10_26/java2023_10_26.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_11_01/java2023_11_01.iml" filepath="$PROJECT_DIR$/java2023_11_01/java2023_11_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_11_02/java2023_11_02.iml" filepath="$PROJECT_DIR$/java2023_11_02/java2023_11_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_11_04/java2023_11_04.iml" filepath="$PROJECT_DIR$/java2023_11_04/java2023_11_04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_11_06/java2023_11_06.iml" filepath="$PROJECT_DIR$/java2023_11_06/java2023_11_06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_11_08/java2023_11_08.iml" filepath="$PROJECT_DIR$/java2023_11_08/java2023_11_08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java2023_11_09/java2023_11_09.iml" filepath="$PROJECT_DIR$/java2023_11_09/java2023_11_09.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project/project.iml" filepath="$PROJECT_DIR$/project/project.iml" />
+    </modules>
+  </component>
+</project>
