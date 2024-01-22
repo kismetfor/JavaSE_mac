@@ -1,11 +1,12 @@
 class Myarray<T> {
-    public T[] array = (T[]) new Object[10];
+//    public T[] array = (T[]) new Object[10];
 
+    public Object[] array = new Object[10];
     public void setValue(int pos, T val) {
         array[pos] = val;
     }
     public T getValue(int pos) {
-        return array[pos];
+        return (T) array[pos];
     }
 }
 class Person {
@@ -46,7 +47,7 @@ public class Main3 {
         Myarray<String> myarray = new Myarray<>();
         myarray.setValue(0, "hello");
         String str = myarray.getValue(0);
-9
+
         Myarray<Person> myarray1 = new Myarray<>();
         myarray1.setValue(0, new Person("张三", 22));
         Person person = myarray1.getValue(0);
