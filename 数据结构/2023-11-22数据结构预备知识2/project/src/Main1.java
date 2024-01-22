@@ -1,4 +1,11 @@
 public class Main1 {
+    public static void main3(String[] args) {
+        int a = 1;
+
+        Integer ii = Integer.valueOf(a);
+
+        int j = ii.intValue();
+    }
     public static void main(String[] args) {
         Integer ii = 200;
         Integer ii2 = 200;
