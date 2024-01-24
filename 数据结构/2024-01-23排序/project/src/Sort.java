@@ -32,10 +32,13 @@ public class Sort {
         }
         System.out.println(Arrays.toString(arr));
     }
+    /*
+    希尔排序
+     */
     public static void shellSort(int[] arr) {
         int gap = arr.length;
         while (gap > 1) {
-            gap /= 2;
+            gap = gap/3+1;
             shell(arr, gap);
         }
     }
@@ -56,10 +59,29 @@ public class Sort {
         }
     }
 
+    /*
+    * 选择排序
+    * 时间复杂度
+    * 空间复杂度
+    * */
+    public static void selectSort(int[] arr) {
+        for (int i = 0; i < arr.length-1; i++) {
+            int minIndex = i;
+            for (int j = i+1; j < arr.length; j++) {
+                if (arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
     public static void main(String[] args) {
-//        int[] arr = {5,3,10,7,4};
-        int[] arr = {9 , 1 , 2 , 5 , 7 , 4 , 8 , 6,  3,  5};
-        Sort.shellSort(arr);
+        int[] arr = {5,3,10,7,4};
+//        int[] arr = {9 , 1 , 2 , 5 , 7 , 4 , 8 , 6,  3,  5};
+//        Sort.shellSort(arr);
+        Sort.selectSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 }
