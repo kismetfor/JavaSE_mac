@@ -41,10 +41,12 @@ public class Sort {
     }
     public static void shell(int[] arr, int gap) {
         for (int i = gap; i < arr.length; i++) {
+            //如果i+=gap的话, 就只能遍历其中一组
+            //那么就+1, 交替遍历每一组
             int temp = arr[i];
             int j = i-gap;
-            for (; j >= 0 ; j-=gap) {
-                if (arr[j] > temp) {
+            for (; j >=0 ; j-=gap) {
+                if (temp < arr[j]) {
                     arr[j+gap] = arr[j];
                 } else {
                     break;
