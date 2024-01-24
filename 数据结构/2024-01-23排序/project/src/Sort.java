@@ -61,8 +61,9 @@ public class Sort {
 
     /*
     * 选择排序
-    * 时间复杂度
-    * 空间复杂度
+    * 时间复杂度: O(N^2)
+    * 空间复杂度: O(1)
+    * 稳定性: 不稳定
     * */
     public static void selectSort(int[] arr) {
         for (int i = 0; i < arr.length-1; i++) {
@@ -78,10 +79,11 @@ public class Sort {
         }
     }
     public static void main(String[] args) {
-        int[] arr = {5,3,10,7,4};
+//        int[] arr = {5,3,10,7,4};
+        int[] arr = {25, 84,21,47, 15, 27,68,35, 20};
 //        int[] arr = {9 , 1 , 2 , 5 , 7 , 4 , 8 , 6,  3,  5};
-//        Sort.shellSort(arr);
-        Sort.selectSort(arr);
+        Sort.shellSort(arr);
+//        Sort.selectSort(arr);
         System.out.println(Arrays.toString(arr));
     }
 }
