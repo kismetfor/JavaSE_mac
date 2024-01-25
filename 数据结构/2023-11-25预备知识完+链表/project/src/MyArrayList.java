@@ -22,21 +22,47 @@ public class MyArrayList implements IList{
 
     @Override
     public void add(int pos, int data) {
-
+        //pos合法 数组是否满了
+        if (isFull()) {
+            elem = Arrays.copyOf(elem, 2* elem.length);
+        }
+        for (int i = usedSize-1; i >= pos; i--) {
+            elem[i+1] = elem[i];
+        }
+        elem[pos] = data;
+        usedSize++;
+    }
+    private void checkPosOfAdd(int pos) {
+        if (pos < 0 || pos>usedSize) {
+            throw new PosException("pos位置为: " +pos);
+        }
     }
 
     @Override
     public boolean contains(int toFind) {
+        for (int i = 0; i < usedSize; i++) {
+            if (toFind == elem[i]) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public int indexOf(int toFind) {
-        return 0;
+        if (contains(toFind)) {
+            for (int i = 0; i < usedSize; i++) {
+                if (toFind == elem[i]) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     @Override
     public int get(int pos) {
+        //pos是否合法
         return 0;
     }
 
