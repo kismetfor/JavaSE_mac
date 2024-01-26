@@ -7,5 +7,11 @@ public class TestDemo {
         myArrayList.add(4);
         myArrayList.add(5);
         myArrayList.add(6);
+
+        System.out.println(myArrayList.contains(5));
+        System.out.println(myArrayList.indexOf(2));
+
+        myArrayList.remove(3);
+        myArrayList.display();
     }
 }

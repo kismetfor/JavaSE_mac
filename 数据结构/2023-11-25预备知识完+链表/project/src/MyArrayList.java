@@ -50,40 +50,69 @@ public class MyArrayList implements IList{
 
     @Override
     public int indexOf(int toFind) {
-        if (contains(toFind)) {
             for (int i = 0; i < usedSize; i++) {
                 if (toFind == elem[i]) {
                     return i;
                 }
             }
-        }
         return -1;
     }
 
     @Override
     public int get(int pos) {
         //pos是否合法
-        return 0;
+        checkPosOfGet(pos);
+        //为空怎么办
+        if (isEmpty()) {
+            throw new EmptyException("顺序表为空");
+        }
+        return elem[pos];
+    }
+    private void checkPosOfGet(int pos) {
+        if (pos<0 || pos>=usedSize) {
+            throw new PosException("pos位置不合法: "+ pos);
+        }
     }
 
+    /**
+     * 更新pos位置的值为value
+     * @param pos
+     * @param value
+     */
     @Override
     public void set(int pos, int value) {
-
+        checkPosOfGet(pos);
+        if (isEmpty()) {
+            throw new EmptyException("顺序表为空");
+        }
+        this.elem[pos] = value;
     }
 
+    /**
+     * 删除toRemove这个数字
+     * @param toRemove
+     */
     @Override
     public void remove(int toRemove) {
-
+        if (isEmpty()) {
+            throw new EmptyException("顺序表为空, 不能删除");
+        }
+        int index = indexOf(toRemove);
+        for (int i = index; i < usedSize-1; i++) {
+            this.elem[i] = this.elem[i+1];
+        }
+        usedSize--;
     }
 
     @Override
     public int size() {
-        return 0;
+        return this.usedSize;
     }
 
     @Override
     public void clear() {
-
+        this.usedSize = 0;
+        
     }
 
     //打印顺序表中所有的元素
@@ -105,6 +134,7 @@ public class MyArrayList implements IList{
 
     @Override
     public boolean isEmpty() {
-        return false;
+
+        return usedSize==0;
     }
 }
