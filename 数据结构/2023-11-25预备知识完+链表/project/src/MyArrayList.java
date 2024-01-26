@@ -112,7 +112,7 @@ public class MyArrayList implements IList{
     @Override
     public void clear() {
         this.usedSize = 0;
-        
+
     }
 
     //打印顺序表中所有的元素
