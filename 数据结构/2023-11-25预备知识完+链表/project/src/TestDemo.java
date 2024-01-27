@@ -5,6 +5,13 @@ import java.util.ListIterator;
 
 public class TestDemo {
     public static void main(String[] args) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(2);
+        arrayList.add(3);
+        System.out.println(arrayList.isEmpty());
+    }
+    public static void main4(String[] args) {
         String s1 = "welcome to cvte";
         String s2 = "come";
         ArrayList<Character> characters = new ArrayList<>();
