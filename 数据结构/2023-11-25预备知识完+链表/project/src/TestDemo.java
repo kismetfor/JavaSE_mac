@@ -9,6 +9,16 @@ public class TestDemo {
         arrayList.add(1);
         arrayList.add(2);
         arrayList.add(3);
+        for (Integer x:
+             arrayList) {
+            System.out.print(x+" ");
+        }
+    }
+    public static void main5(String[] args) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(2);
+        arrayList.add(3);
         System.out.println(arrayList.isEmpty());
     }
     public static void main4(String[] args) {
