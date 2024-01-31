@@ -23,7 +23,7 @@ public class Main1 {
             curRow.add(1);
             ret.add(curRow);
         }
-        return ret;
+//        return ret;
     }
 
 }
