@@ -28,18 +28,34 @@ public class CardGame {
     //洗牌
     public void shuffle(List<Card> cardList) {
         Random random = new Random();
-        List<Card> hand = new ArrayList<>();
+        for (int i = cardList.size()-1; i > 0 ; i--) {
+            int index = random.nextInt(i);
+            swap(cardList, i, index);
+        }
+    }
+    public void swap(List<Card> cardList, int i, int j) {
+        Card tmp = cardList.get(i);
+        cardList.set(i, cardList.get(j));
+        cardList.set(j, tmp);
+    }
+    public List<List<Card>> getCard(List<Card> cardList) {
+
+        List<List<Card>> hand = new ArrayList<>();
         List<Card> hand1 = new ArrayList<>();
         List<Card> hand2 = new ArrayList<>();
         List<Card> hand3 = new ArrayList<>();
-
+        hand.add(hand1);
+        hand.add(hand2);
+        hand.add(hand3);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 3; j++) {
-                int index = random.nextInt(i);
-
+                Card card = cardList.remove(0);
+                hand.get(j).add(card);
             }
         }
+        return hand;
     }
-    public void swap(List<Card> cardList, int i, int j)
+
+
 
 }
