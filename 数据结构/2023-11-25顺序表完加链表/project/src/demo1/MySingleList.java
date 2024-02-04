@@ -5,7 +5,7 @@ import java.util.List;
 public class MySingleList implements IList {
     ListNode head; //null
 
-    class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
 
@@ -28,12 +28,24 @@ public class MySingleList implements IList {
     }
     @Override
     public void addFirst(int data) {
-
+        //插入数据的时候 一定先绑后面
+        ListNode node = new ListNode(data);
+        node.next = head;
+        head = node;
     }
 
     @Override
     public void addLast(int data) {
-
+        ListNode node = new ListNode(data);
+        if (this.head == null) {
+            this.head = node;
+        } else {
+            ListNode cur = this.head;
+            while (cur.next != null ) {
+                cur = cur.next;
+            }
+            cur.next = node;
+        }
     }
 
     @Override
@@ -41,8 +53,20 @@ public class MySingleList implements IList {
 
     }
 
+    /**
+     * 求当前链表是否存在Key
+     * @param key
+     * @return
+     */
     @Override
-    public boolean contains(int ksy) {
+    public boolean contains(int key) {
+        ListNode node = head;
+        while (node != null) {
+            if (node.val == key) {
+                return true;
+            }
+            node = node.next;
+        }
         return false;
     }
 
@@ -56,9 +80,19 @@ public class MySingleList implements IList {
 
     }
 
+    /**
+     * 求当前链表有多少个节点
+     * @return
+     */
     @Override
     public int size() {
-        return 0;
+        ListNode node = this.head;
+        int ret = 0;
+        while (node != null) {
+            ret++;
+            node = node.next;
+        }
+        return ret;
     }
 
     @Override
@@ -68,7 +102,11 @@ public class MySingleList implements IList {
 
     @Override
     public void display() {
-
+        ListNode node = this.head;
+        while (node != null) {
+            System.out.print(node.val+" ");
+            node = node.next;
+        }
     }
 
 }
