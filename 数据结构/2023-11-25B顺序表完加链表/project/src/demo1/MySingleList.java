@@ -49,10 +49,37 @@ public class MySingleList implements IList {
     }
 
     @Override
-    public void dataIndex(int index, int data) {
-
+    public void addIndex(int index, int data) {
+        if (index < 0 || index > size()) {
+            throw new IndexException("Index位置不合法: "+index);
+        }
+        ListNode node  = new ListNode(data);
+        if (this.head==null) {
+            node = this.head;
+        }
+        if (index==0){
+            addFirst(data);
+            return;
+        }
+        if (index==size()){
+            addLast(data);
+            return;
+        }
+        ListNode cur = searchPervNode(index);
+        node.next = cur.next;
+        cur.next = node;
     }
 
+    /**
+     * 找Index前面一个位置的节点
+     */
+    private ListNode searchPervNode(int index) {
+        ListNode cur = this.head;
+        while (--index != 0) {
+            cur = cur.next;
+        }
+        return cur;
+    }
     /**
      * 求当前链表是否存在Key
      * @param key
@@ -72,7 +99,22 @@ public class MySingleList implements IList {
 
     @Override
     public void remove(int key) {
-
+        if (this.head == null) {
+            return;
+        }
+        if (this.head.val==key) {
+            this.head = this.head.next;
+            return;
+        }
+        ListNode node = this.head;
+        while (node.next != null) {
+            if (node.next.val == key) {
+                node.next = node.next.next;
+                return;
+            } else {
+                node = node.next;
+            }
+        }
     }
 
     @Override

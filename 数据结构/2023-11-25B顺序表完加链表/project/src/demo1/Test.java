@@ -17,5 +17,14 @@ public class Test {
         System.out.println("====");
         mySingleList.addLast(67);
         mySingleList.display();
+        System.out.println();
+        System.out.println("====addIndex");
+        mySingleList.addIndex(3, 33);
+        mySingleList.display();
+
+        System.out.println();
+        System.out.println("====remove");
+        mySingleList.remove( 67);
+        mySingleList.display();
     }
 }
