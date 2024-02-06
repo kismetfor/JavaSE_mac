@@ -2,6 +2,15 @@ package demo;
 
 public class mySingleList implements IList{
     ListNode head = null;
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode(int val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
     public void creatList() {
         ListNode node1 = new ListNode(12);
         ListNode node2 = new ListNode(23);
@@ -121,9 +130,21 @@ public class mySingleList implements IList{
         return ret;
     }
 
+    /**
+     * 当一个对象 没有人引用的时候就会被回收掉
+     * 方法1 直接把head置空
+     * 方法2 一个一个置空, 然后把head置空
+     */
     @Override
     public void clear() {
-        
+//        head = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode curNext  = cur.next;
+            cur.next = null;
+            cur = curNext;
+        }
+        head = null;
     }
 
     @Override
@@ -135,13 +156,5 @@ public class mySingleList implements IList{
         }
     }
 
-    static class ListNode {
-        int val;
-        ListNode next;
 
-        public ListNode(int val) {
-            this.val = val;
-            this.next = null;
-        }
-    }
 }
