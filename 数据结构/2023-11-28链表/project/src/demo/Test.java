@@ -1,7 +1,7 @@
 package demo;
 
 public class Test {
-    public static mySingleList.ListNode mergeTwoLists(mySingleList.ListNode list1, mySingleList.ListNode list2) {
+    /*public static mySingleList.ListNode mergeTwoLists(mySingleList.ListNode list1, mySingleList.ListNode list2) {
         mySingleList.ListNode newHead = new mySingleList.ListNode(-1);
         mySingleList.ListNode cur = newHead;
         while (list1!= null && list2!=null) {
@@ -22,9 +22,9 @@ public class Test {
             cur.next = list2;
         }
         return newHead.next;
-    }
+    }*/
     public static void main(String[] args) {
-        mySingleList mySingleList11 = new mySingleList();
+        /*mySingleList mySingleList11 = new mySingleList();
         mySingleList11.addLast(1);
         mySingleList11.addLast(2);
         mySingleList11.addLast(4);
@@ -41,10 +41,11 @@ public class Test {
         mySingleList.ListNode ret = mergeTwoLists(mySingleList11.head, mySingleList22.head);
         System.out.println();
 
+
+*/
         mySingleList mySingleList = new mySingleList();
         mySingleList.creatList();
         mySingleList.display();
-
         System.out.println();
         System.out.println("=====remove");
         mySingleList.remove(56);
