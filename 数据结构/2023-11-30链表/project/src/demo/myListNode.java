@@ -20,6 +20,43 @@ public class myListNode {
         node3.next = node4;
         node4.next = node5;
     }
+
+    /**
+     * OR36 链表的回文结构
+     * https://www.nowcoder.com/practice/d281619e4b3e4a60a2cc66ea32855bfa?tpId=49&&tqId=29370&rp=1&ru=/activity/oj&qru=/ta/2016test/question-ranking
+     * @param A
+     * @return
+     */
+    public static boolean chkPalindrome(ListNode A) {
+        if(A==null){
+            return false;
+        }
+        ListNode pHead = A;
+        ListNode slow = A;
+        while (A != null && A.next != null) {
+            A = A.next.next;
+            slow = slow.next;
+        }
+        ListNode cur = slow.next;
+        slow.next = null;
+        while (cur != null) {
+            ListNode curNext = cur.next;
+            cur.next = slow;
+            slow = cur;
+            cur = curNext;
+        }
+        while (slow != null) {
+            if (pHead.val != slow.val) {
+                return false;
+            }
+            pHead = pHead.next;
+            slow = slow.next;
+        }
+        return true;
+    }
+
+
+
     public static void display(ListNode pHead) {
         while (pHead != null) {
             System.out.print(pHead.val+" ");
