@@ -17,5 +17,20 @@ public class Test {
         //peek 获取元素 但是不删除
         Integer ret1 = stack.peek();
         System.out.println(ret1);
+
+        String[] tokens = {"123", "34","+"};
+        int i = 0;
+        switch (tokens[i]) {
+            case "+" :
+                stack.push(1+2);
+                break;
+            case "-" :
+                break;
+            case "*" :
+                break;
+            case "/" :
+                break;
+        }
+
     }
 }
