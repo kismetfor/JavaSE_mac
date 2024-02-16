@@ -28,4 +28,36 @@ public class myLinkedList {
         node.prev = last;
         last = node;
     }
+    /**
+     * 出队
+     */
+    public int poll (){
+        if (head==null) {
+            return -1;
+        }
+        if (head.next == null) {
+            head=null;
+            last=null;
+            return -1;
+        }
+        int ret = head.val;
+        head = head.next;
+        return ret;
+    }
+    public boolean empty() {
+        return head==null;
+    }
+
+    /**
+     * 取队头
+     * @return
+     */
+    public int peek() {
+        if (head==null) {
+            return -1;
+        }
+        return head.val;
+    }
+
+
 }
