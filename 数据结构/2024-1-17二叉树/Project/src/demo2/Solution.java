@@ -1,6 +1,23 @@
 package demo2;
 
 class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if (root==null) {return true;}
+        return isSymmetricChild(root.left, root.right);
+    }
+    boolean isSymmetricChild(TreeNode lt, TreeNode rt) {
+        if (lt==null&&rt==null) {
+            return true;
+        }
+        if (lt==null&&rt!=null || lt!=null&&rt==null) {
+            return false;
+        }
+        if (lt.val!=rt.val) {
+            return false;
+        }
+        return isSymmetricChild(lt.left, rt.right)&&
+                isSymmetricChild(lt.right, rt.left);
+    }
     public boolean isBalanced(TreeNode root) {
         if (root==null) {
             return true;
