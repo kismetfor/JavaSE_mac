@@ -203,28 +203,24 @@ public class BinaryTree {
         return true;
     }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (p==root||q==root) {
+        if (root.val==p.val||root.val==q.val) {
             return root;
         }
-        if (p==null||q==null) {
-            return null;
+        TreeNode left = null;
+        if (root.left!=null) {
+             left = lowestCommonAncestor(root.left, p, q);
         }
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        TreeNode right = null;
+        if (root.right!=null) {
+            right = lowestCommonAncestor(root.right, p, q);
+        }
         if (left==null&&right!=null) {
-            
+            return right;
         }
-        TreeNode cur = root.left;
+        if (right==null&&left!=null) {
+            return left;
+        }
+        return root;
     }
-    TreeNode findPQ(TreeNode root, TreeNode p, TreeNode q) {
-        if (root==null) {
-            return null;
-        }
-        if (p==root||q==root) {
-            return root;
-        }
-        findPQ(root.left, p, q);
-        findPQ(root.right, p, q);
-        return null;
-    }
+
 }
