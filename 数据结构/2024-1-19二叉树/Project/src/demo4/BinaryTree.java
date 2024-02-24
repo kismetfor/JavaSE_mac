@@ -2,6 +2,7 @@ package demo4;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class BinaryTree {
     //穷举方式创建
@@ -221,6 +222,25 @@ public class BinaryTree {
             return left;
         }
         return root;
+    }
+    public boolean getPath(TreeNode root, TreeNode node, Stack<TreeNode> stack) {
+        if (root==null) {
+            return false;
+        }
+        stack.push(root);
+        if (root==node) {
+            return true;
+        }
+        boolean getLeft = getPath(root.left, node, stack);
+        if (getLeft) {
+            return true;
+        }
+        boolean getRight = getPath(root.right, node, stack);
+        if (getRight) {
+            return true;
+        }
+        stack.pop();
+        return false;
     }
 
 }
