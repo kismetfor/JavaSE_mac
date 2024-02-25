@@ -1,34 +1,33 @@
-package demo;
-
-import demo4.BinaryTree;
+package demo1;
 
 import java.util.Stack;
 
 class Solution {
-    public int preIndex;
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return buildTreeChild(preorder,  inorder, 0, inorder.length-1);
+    public int postIndex;
+    public TreeNode buildTree(int[] postorder, int[] inorder) {
+        postIndex = postorder.length-1;
+        return buildTreeChild(postorder, inorder, 0, inorder.length-1);
     }
 
 
     /**
      *
-     * @param preorder 前序遍历数组
+     * @param postorder 前序遍历数组
      * @param inorder 中序遍历数组
      * @param inBegin 从这个地方开始找rootIndex
      * @param inEnd 从这个地方结束不找rootIndex
      * @return 根节点
      */
-    public TreeNode buildTreeChild(int[] preorder,
+    public TreeNode buildTreeChild(int[] postorder,
                                    int[] inorder, int inBegin, int inEnd) {
-        if (inBegin>inEnd) {
+        if (inBegin > inEnd || postIndex<0) {
             return null;
         }
-        TreeNode root = new TreeNode(preorder[preIndex]);
+        TreeNode root = new TreeNode(postorder[postIndex]);
         int rootIndex = findIndex(root.val, inorder, inBegin, inEnd);
-        preIndex++;
-        root.left = buildTreeChild(preorder, inorder, inBegin, rootIndex-1);
-        root.right = buildTreeChild(preorder, inorder, rootIndex+1, inEnd);
+        postIndex--;
+        root.right = buildTreeChild(postorder, inorder, rootIndex+1, inEnd);
+        root.left = buildTreeChild(postorder, inorder, inBegin, rootIndex-1);
         return root;
     }
     public int findIndex(int val, int[] inorder, int inBegin, int inEnd) {
