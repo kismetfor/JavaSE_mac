@@ -7,7 +7,7 @@ public class Test {
         testHeap.initElem(array);
         testHeap.creatHeap();
 //        System.out.println(testHeap.poll());
-        testHeap.offer(10);
+        testHeap.heapSort();
         System.out.println("====");
     }
 }

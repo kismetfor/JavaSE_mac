@@ -42,6 +42,21 @@ public class TestHeap {
             }
         }
     }
+    public void siftDown(int parent, int end) {
+        int child = parent*2+1;
+        while (child<end) {
+            if (child+1<end && elem[child]<elem[child+1]) {
+                child++;
+            }
+            if (elem[child]>elem[parent]) {
+                swap(child, parent);
+                parent = child;
+                child = parent*2+1;
+            } else {
+                break;
+            }
+        }
+    }
     public void swap(int i, int j) {
         int temp = elem[i];
         elem[i] = elem[j];
@@ -85,6 +100,19 @@ public class TestHeap {
             } else {
                 break;
             }
+        }
+    }
+
+    /**
+     * 堆排序 从小到大进行排序
+     * 这里是大根堆
+     */
+    public void heapSort() {
+        int end = usedSize-1;
+        while (end > 0) {
+            swap(end, 0);
+            siftDown(0, end-1);
+            end--;
         }
     }
 }
