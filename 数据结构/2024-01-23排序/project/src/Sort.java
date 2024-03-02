@@ -30,7 +30,7 @@ public class Sort {
             }
             arr[j+1] = temp;
         }
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
     }
     /*
     希尔排序
@@ -76,6 +76,72 @@ public class Sort {
             int temp = arr[i];
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
+        }
+    }
+    public static void swap(int i, int j, int[] arr) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+    public static void selectSort2(int[] arr) {
+        int left  = 0;
+        int right = arr.length-1;
+        while (left<right) {
+            int minIndex  = left;
+            int maxIndex = right;
+            for (int i = left; i <= right; i++) {
+                if (arr[i] < arr[minIndex]) {
+                    minIndex = i;
+                }
+                if (arr[i] > arr[maxIndex]) {
+                    maxIndex = i;
+                }
+            }
+            swap(minIndex, left,arr);
+            if (maxIndex==left) {
+                maxIndex = minIndex;
+            }
+            swap(maxIndex, right,arr);
+            left++;right--;
+        }
+    }
+    /**
+     *堆排序
+     * 时间复杂度: O(N*logN)
+     * 空间复杂度: O(1)
+     * @param arr
+     */
+    public static void heapSort(int[] arr) {
+        createHeap(arr);
+        int end = arr.length-1;
+        while (end>0) {
+            swap(end, 0, arr);
+            siftDown(arr, 0,end);
+            end--;
+        }
+    }
+
+    /**
+     * 创建大根堆
+     */
+    public static void createHeap(int[] arr) {
+        for (int parent = (arr.length-1-1)/2; parent >=0 ; parent--) {
+            siftDown(arr, parent, arr.length);
+        }
+    }
+    private static void siftDown(int[] arr, int parent, int end) {
+        int child = parent*2+1;
+        while (child<end) {
+            if (child+1<end && arr[child+1]>arr[child]) {
+                child++;
+            }
+            if (arr[child] > arr[parent]) {
+                swap(child, parent, arr);
+            } else {
+                break;
+            }
+            parent = child;
+            child = parent*2+1;
         }
     }
     public static void main(String[] args) {

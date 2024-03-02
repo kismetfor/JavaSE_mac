@@ -1,5 +1,3 @@
-package demo;
-
 public class Sort {
     /**
      * 直接插入排序
@@ -163,5 +161,11 @@ public class Sort {
                 break;
             }
         }
+    }
+    /**
+     * 快速排序
+     */
+    public static void quickSort(int[] arr) {
+        
     }
 }
