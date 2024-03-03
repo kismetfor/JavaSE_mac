@@ -70,6 +70,13 @@ public class Sort {
             }
         }
     }
+
+    /**
+     * 交换
+     * @param i 交换
+     * @param j 交换
+     * @param arr 数组
+     */
     public static void swap(int i, int j, int[] arr) {
         int tmp = arr[i];
         arr[i] = arr[j];
@@ -164,8 +171,82 @@ public class Sort {
     }
     /**
      * 快速排序
+     * 时间复杂度: 最好情况下: O(logN)
+     * 时间复杂度: 最坏情况下: O(N^2)
+     * 空间复杂度:
+     *  最好情况下: O(logN)
+     *  最坏情况下: O(N)
+     *  稳定性: 不稳定
      */
     public static void quickSort(int[] arr) {
-        
+        quick(arr, 0, arr.length-1);
+    }
+    public static void quick(int[] arr, int start, int end) {
+        /*
+        为什么这里面的if (start >= end) {
+            return;
+        }不可以写成if (start == end) {
+            return;
+        }原因在于，在快速排序的过程中，每次递归都会选取一个基准元素（pivot）并将数组分割为两部分，
+        左侧是小于等于基准的元素，右侧是大于等于基准的元素。如果 start 和 end 相等，
+        说明当前的子数组只包含一个元素，即已经是有序的。
+        然而，if (start == end) 的条件可能在实际的分割过程中并不总是能够准确地捕获到需要停止的情况。
+        这是因为在分割的过程中，可能会出现某些元素与基准相等的情况，
+        导致在一次分割中有多个元素与基准相等，
+        从而导致 start 和 end 在相等时，子数组并不是必然已经有序。
+         */
+        if (start >= end) {
+            return;
+        }
+
+        int pivot = partitionHoare(arr, start, end);
+
+        quick(arr, start, pivot-1);
+
+        quick(arr, pivot+1, end);
+    }
+
+    /**
+     * Hoare版
+     * 分割--
+     * 分治法
+     * @param arr 数组
+     * @param left 左
+     * @param right 右
+     * @return 中心点
+     */
+    public static int partitionHoare(int[] arr, int left, int right) {
+        int tmp = arr[left];
+        int p = left;
+        while (left<right) {
+            while (left<right && arr[right]>=tmp) {
+                right--;
+            }
+            while (left<right && arr[left]<=tmp) {
+                left++;
+            }
+            swap(left,right,arr);
+        }
+        swap(p,left,arr);
+        return right;
+    }
+
+    /**
+     * 挖坑法
+     */
+    public static int partition(int[] arr, int left, int right){
+        int tmp = arr[left];
+        while (left<right) {
+            while (left<right && arr[right] >= tmp) {
+                right--;
+            }
+            arr[left] = arr[right];
+            while (left<right && arr[left] <= tmp) {
+                left++;
+            }
+            arr[right] = arr[left];
+        }
+        arr[right] = tmp;
+        return right;
     }
 }
