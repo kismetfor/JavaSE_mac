@@ -199,13 +199,37 @@ public class Sort {
             return;
         }
 
-        int pivot = partitionHoare(arr, start, end);
+        /*
+        优化为三数取中
+         */
+        int index = middleNum(arr, start, end);
+        swap(index, start, arr);
+        int pivot = partition(arr, start, end);
 
         quick(arr, start, pivot-1);
 
         quick(arr, pivot+1, end);
     }
-
+    public static int middleNum(int[] arr, int left, int right) {
+        int mid = left + ((right-left) >> 1);
+        if (arr[left] < arr[right]) {
+            if (arr[right] < arr[mid]) {
+                return right;
+            } else if (arr[mid] <arr[left]) {
+                return left;
+            } else {
+                return mid;
+            }
+        } else {
+            if (arr[right] > arr[mid]) {
+                return right;
+            } else if (arr[mid] > arr[left]) {
+                return left;
+            } else {
+                return mid;
+            }
+        }
+    }
     /**
      * Hoare版
      * 分割--
