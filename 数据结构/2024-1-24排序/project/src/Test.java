@@ -61,23 +61,33 @@ public class Test {
         long endTime = System.currentTimeMillis();
         System.out.println("快速排序: " + (endTime-startTime));
     }
-
-    public static void main(String[] args) {
-        int[] arr = new int[10_0000];
-        messArray(arr);
-        //使用倒序排序到升序 考虑的是最坏时间复杂度
-        testInsertSort(arr);
-        testSelectSort(arr);
-        testSelect2Sort(arr);
-        testShellSort(arr);
-        testHeapSort(arr);
-        testQuickSort(arr);
+    public static void testMergeSort(int[] arr) {
+        int[] tmpArray = Arrays.copyOf(arr, arr.length);
+        long startTime = System.currentTimeMillis();
+        Sort.mergeSort(tmpArray);
+        long endTime = System.currentTimeMillis();
+        System.out.println("归并排序: " + (endTime-startTime));
     }
 
     public static void main1(String[] args) {
+        int[] arr = new int[10_0000];
+        messArray(arr);
+        //使用倒序排序到升序 考虑的是最坏时间复杂度
+//        testInsertSort(arr);
+//        testSelectSort(arr);
+//        testSelect2Sort(arr);
+        testShellSort(arr);
+        testHeapSort(arr);
+        testQuickSort(arr);
+        testMergeSort(arr);
+    }
+
+    public static void main(String[] args) {
 //        int[] arr = {3,5,2,10,9,8,17};
-        int[] arr = {2,1,4,3,5,9,8,6,5,7};
-        Sort.quickSort(arr);
+//        int[] arr = {2,1,4,3,5,9,8,6,5,7};
+//        int[] arr = {5,1,2,4,3,6,8,7,9,10};
+        int[] arr = {95,91,92,94,93,96,98,97,99,90,91,92,93,94,95,96,97,98,99};
+        Sort.mergeSortNor(arr);
         System.out.println(Arrays.toString(arr));
     }
 }

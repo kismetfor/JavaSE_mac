@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Sort {
     /**
      * 直接插入排序
@@ -272,5 +274,121 @@ public class Sort {
         }
         arr[right] = tmp;
         return right;
+    }
+    /**
+     * 非递归快排
+     */
+    public static void quickSortNor(int[] arr) {
+        int left = 0;
+        int right = arr.length-1;
+        Stack<Integer> stack = new Stack<>();
+
+        int index = middleNum(arr, left, right);
+        swap(index, left, arr);
+        int pivot = partition(arr, left, right);
+
+        do {
+            if (pivot-1 > left) {
+                stack.push(left);
+                stack.push(pivot-1);
+            }
+            if (pivot+1 < right) {
+                stack.push(pivot+1);
+                stack.push(right);
+            }
+
+            right = stack.pop();
+            left = stack.pop();
+            pivot = partition(arr, left, right);
+        } while (!stack.isEmpty());
+    }
+    /**
+     * 归并排序
+     * 时间复杂度 O(logN)
+     * 空间复杂度 O(N) 创建了一棵与数组相同大小的树
+     *
+     */
+    public static void mergeSort(int[] arr) {
+        mergeFunc(arr, 0, arr.length-1);
+    }
+    private static void mergeFunc(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = left+((right-left)>>1);
+        mergeFunc(arr, left, mid);
+        mergeFunc(arr, mid+1, right);
+
+        merge(arr, left, mid, right);
+    }
+    private static void merge(int[] arr, int left,int mid, int right) {
+        int s1 = left;
+        int e1 = mid;
+        int s2 = mid+1;
+        int e2 = right;
+
+        int[] tmpArr = new int[right-left+1];
+        int k = 0;
+        while (s1<=e1 && s2<=e2) {
+            if (arr[s1] <= arr[s2]) {
+                tmpArr[k++] = arr[s1++];
+            } else {
+                tmpArr[k++] = arr[s2++];
+            }
+        }
+        while (s1<=e1) {
+            tmpArr[k++] = arr[s1++];
+        }
+        while (s2<=e2) {
+            tmpArr[k++] = arr[s2++];
+        }
+        for (int i = 0; i < k; i++) {
+            arr[i+left] = tmpArr[i];
+        }
+    }
+    /**
+     * 非递归归并
+     */
+    public static void mergeSortNor(int[] arr) {
+        int gap = 1;
+        while (gap < arr.length) {
+            for (int i = 0; i < arr.length; i+=2*gap) {
+                int left = i;
+                int mid = left+gap-1;
+                if (mid>= arr.length) {
+                    mid = arr.length-1;
+                }
+
+                int right = mid+gap;
+                if (right>= arr.length) {
+                    right = arr.length-1;
+                }
+                merge(arr, left, mid,right);
+            }
+            gap*= 2;
+        }
+    }
+    public static void countSort(int[] arr) {
+        int min = arr[0];
+        int max = arr[0];
+        for (int i=1; i< arr.length;i++) {
+            if (min > arr[i]) {
+                min = arr[i];
+            }
+            if (max < arr[i]) {
+                max = arr[i];
+            }
+        }
+        int[] count = new int[max-min+1];
+        for (int i = 0; i < arr.length; i++) {
+            int index = arr[i]-min;
+            count[index]++;
+        }
+        int k = 0;
+        for (int i = 0; i < arr.length; i++) {
+            while (count[i]-- != 0) {
+                arr[k++] = count[i];
+            }
+        }
     }
 }
