@@ -13,7 +13,46 @@ public class Main1 {
             }
         }
 
-        PriorityQueue<Map.Entry<String, Integer>> minHeap = new PriorityQueue<>();
+        PriorityQueue<Map.Entry<String, Integer>> minHeap = new PriorityQueue<>(new Comparator<Map.Entry<String, Integer>>() {
+            //根据value比较
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue().compareTo(o2.getValue()) == 0) {
+                    //频率相同 大根堆存储
+                    return o2.getKey().compareTo(o1.getKey());
+                }
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+
+        for (Map.Entry<String, Integer> entry:
+             map.entrySet()) {
+            if (minHeap.size() < k) {
+                minHeap.offer(entry);
+            } else {
+                Map.Entry<String, Integer> top = minHeap.peek();
+                if (top.getValue().compareTo(entry.getValue()) < 0) {
+                    minHeap.poll();
+                    minHeap.offer(entry);
+                } else  if (top.getValue().compareTo(entry.getValue()) ==0 ){
+                  //如果不同的单词有相同出现频率，按字典顺序排序。
+                    if (top.getKey().compareTo(entry.getKey()) > 0) {
+                        minHeap.poll();
+                        minHeap.offer(entry);
+                    } else {
+
+                    }
+                }
+            }
+        }
+
+        List<String> ret = new ArrayList<>();
+        while (k-- != 0) {
+            Map.Entry<String, Integer> entry = minHeap.poll();
+            ret.add(entry.getKey());
+        }
+        Collections.reverse(ret);
+        return ret;
     }
     public static void main(String[] args) {
         Map<String, Integer> map = new HashMap<>();
