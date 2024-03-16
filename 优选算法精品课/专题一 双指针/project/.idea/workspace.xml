@@ -58,6 +58,7 @@
       <workItem from="1710394334091" duration="1209000" />
       <workItem from="1710493529877" duration="3157000" />
       <workItem from="1710505266343" duration="2210000" />
+      <workItem from="1710572095572" duration="3619000" />
     </task>
     <servers />
   </component>
@@ -82,7 +83,22 @@
           <line>46</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main8.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main8.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="target" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
