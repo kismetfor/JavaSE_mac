@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84f9b5b9-085f-43f6-aa8d-15d90699a4d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="84f9b5b9-085f-43f6-aa8d-15d90699a4d5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +56,7 @@
       <workItem from="1710394334091" duration="1209000" />
       <workItem from="1710493529877" duration="3157000" />
       <workItem from="1710505266343" duration="2210000" />
-      <workItem from="1710572095572" duration="3619000" />
+      <workItem from="1710572095572" duration="3964000" />
     </task>
     <servers />
   </component>
@@ -82,16 +80,6 @@
           <url>file://$PROJECT_DIR$/src/Main7.java</url>
           <line>46</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main8.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main8.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
