@@ -2,7 +2,33 @@ import java.util.HashSet;
 
 public class Main010 {
     public static void main(String[] args) {
-        
+        String s1 = "abcabcbb";
+//        System.out.println(lengthOfLongestSubstring(s1));
+        String s2 = "tmmzuxt";
+        System.out.println(lengthOfLongestSubstring(s2));
+    }
+    public static int lengthOfLongestSubstring(String s) {
+        //分析出来错误的原因了
+        //此处的哈希表需要记录次数
+        //出集合的时候 需要减一
+        int ret = 0;
+        int left = 0;
+        int right = 0;
+        HashSet<Character> set = new HashSet<>();
+        while (right < s.length()) {
+            char ch = s.charAt(right);
+            if (!set.contains(ch)) {
+                set.add(ch);
+                ret = Math.max(ret, right-left+1);
+            } else {
+                while (s.charAt(left) != ch) {
+                    set.remove(s.charAt(left++));
+                }
+                set.remove(ch);
+                right++;
+            }
+        }
+        return ret;
     }
     public int lengthOfLongestSubstring2(String s) {
         int ret = 0;
@@ -13,9 +39,7 @@ public class Main010 {
             if (!set.contains(ch)) {
                 set.add(ch);
             } else {
-                while () {
 
-                }
 
                 //left走到冲突字符处
                 //加加
@@ -82,7 +106,7 @@ public class Main010 {
 
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         String s1 = "abcabcbb";
         String s2 = "eeee";
         String s3 = "pwwkew";
