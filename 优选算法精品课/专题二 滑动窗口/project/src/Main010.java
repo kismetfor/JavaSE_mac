@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class Main010 {
     public static void main(String[] args) {
@@ -7,26 +9,38 @@ public class Main010 {
         String s2 = "tmmzuxt";
         System.out.println(lengthOfLongestSubstring(s2));
     }
-    public static int lengthOfLongestSubstring(String s) {
-        //分析出来错误的原因了
-        //此处的哈希表需要记录次数
-        //出集合的时候 需要减一
+    public static int lengthOfLongestSubstring(String ss) {
+        char[] s = ss.toCharArray();
+        int[] hash = new int[128]; //数组模拟哈希表
+        int left = 0;
+        int right = 0;
+        int n = ss.length();
+        int ret = 0;
+        while (right < n) {
+            hash[s[right]]++; //进入哈希表
+            while (hash[s[right]] > 1) { //出现重复字符
+                hash[s[left++]]--; //出窗口
+            }
+            ret = Math.max(ret, right-left+1);
+            right++;
+        }
+        return ret;
+    }
+    public static int lengthOfLongestSubstring3(String s) {
         int ret = 0;
         int left = 0;
         int right = 0;
-        HashSet<Character> set = new HashSet<>();
+        Map<Character, Integer> map = new HashMap<>();
         while (right < s.length()) {
             char ch = s.charAt(right);
-            if (!set.contains(ch)) {
-                set.add(ch);
-                ret = Math.max(ret, right-left+1);
-            } else {
-                while (s.charAt(left) != ch) {
-                    set.remove(s.charAt(left++));
-                }
-                set.remove(ch);
-                right++;
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            while (map.get(ch) > 1) {
+                char leftChar = s.charAt(left);
+                map.put(leftChar, map.get(leftChar) - 1);
+                left++;
             }
+            ret = Math.max(ret, right - left + 1);
+            right++;
         }
         return ret;
     }
