@@ -12,7 +12,7 @@ public class Main1 {
                     }
                 }
             }
-        });
+        }, "自定义线程");
         t.start();
         while (true) {
             System.out.println("main");

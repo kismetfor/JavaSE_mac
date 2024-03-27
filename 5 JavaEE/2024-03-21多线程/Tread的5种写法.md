@@ -24,11 +24,11 @@ Tread的5种写法
 
 4. 使用lambda表达式
 
-5. 使用线程池
+5. 匿名内部类
 
-   线程池是一种管理和复用线程的机制，它可以有效地管理大量的线程，避免频繁创建和销毁线程所带来的开销，并且可以控制并发线程数量，防止系统资源被过度消耗。Java 提供了 `Executor` 框架来支持线程池的使用。
+   ![image-20240327153515897](/Users/rain/Library/Application Support/typora-user-images/image-20240327153515897.png)
 
-   ![image-20240327133407879](/Users/rain/Library/Application Support/typora-user-images/image-20240327133407879.png)
+6. 匿名内部类--针对Runnable
 
-
+![image-20240327155543346](/Users/rain/Library/Application Support/typora-user-images/image-20240327155543346.png)
 
