@@ -7,19 +7,30 @@ class MyBlockingQueue {
     public MyBlockingQueue (int capacity) {
         elems = new String[capacity];
     }
-    public void put(String elem) {
-        if (size >= elems.length) return;
-        size++;
-        elems[tail] = elem;
-        tail++;
-        if (tail >= elems.length) tail=0;
+    public void put(String elem) throws InterruptedException {
+        synchronized (locker) {
+            while (size >= elems.length){
+                locker.wait();
+            }
+            size++;
+            elems[tail] = elem;
+            tail++;
+            if (tail >= elems.length) tail=0;
+            locker.notify();
+        }
     }
 
-    public String take() {
-        if (size==0) return null;
-        String h = elems[head];
-        head++;
-        if (head >= elems.length) head=0;
+    public String take() throws InterruptedException {
+        String h = null;
+        synchronized (locker) {
+            while (size==0) {
+                locker.wait();
+            }
+            h = elems[head];
+            head++;size--;
+            if (head >= elems.length) head=0;
+            locker.notify();
+        }
         return h;
     }
 
@@ -27,17 +38,85 @@ class MyBlockingQueue {
 }
 public class Main {
     public static void main(String[] args) {
-        MyBlockingQueue myBlockingQueue = new MyBlockingQueue(2);
-        myBlockingQueue.put("qwe");
-        myBlockingQueue.put("qwee");
-        myBlockingQueue.put("qweee");
-        myBlockingQueue.put("qweeett");
+        MyBlockingQueue queue = new MyBlockingQueue(2);
 
-        for (int i = 0; i < 3; i++) {
-            String elem;
-            elem = myBlockingQueue.take();
-            System.out.println(elem+" ");
-        }
+        Thread producer = new Thread(()->{
+            int n = 0;
+            while (true) {
+                try {
+                    System.out.println("生产者生产元素"+n);
+                    queue.put(Integer.toString(n));
+                    n++;
+
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        });
+        Thread conductor = new Thread(()->{
+            while (true) {
+                try {
+                    System.out.println("消费者消费元素"+queue.take());
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        });
+
+        producer.start();
+        conductor.start();
+    }
+    public static void main1(String[] args) throws InterruptedException {
+
+        MyBlockingQueue myBlockingQueue = new MyBlockingQueue(2);
+
+
+
+        Thread t1 = new Thread(()->{
+            try {
+                myBlockingQueue.put("001");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                myBlockingQueue.put("002");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        Thread t2 = new Thread(()->{
+            try {
+                myBlockingQueue.put("003");
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                myBlockingQueue.put("004");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+
+       Thread t3 = new Thread(()->{
+           for (int i = 0; i < 5; i++) {
+               String elem;
+               try {
+                   elem = myBlockingQueue.take();
+               } catch (InterruptedException e) {
+                   throw new RuntimeException(e);
+               }
+               System.out.println(elem+" ");
+           }
+       });
+       t1.start();
+       t2.start();
+       t3.start();
 
     }
 }
