@@ -1,6 +1,6 @@
-import java.util.Comparator;
+package demo1;
+
 import java.util.PriorityQueue;
-import java.util.Timer;
 
 class MyTimerTask implements Comparable<MyTimerTask> {
     //在什么时间点来执行这个任务
