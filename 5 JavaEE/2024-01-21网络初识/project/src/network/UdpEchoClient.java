@@ -5,9 +5,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
-public class UdpEchoClient {
+public class UdpEchoServer {
     private DatagramSocket socket = null;
-    public UdpEchoClient(int port) throws SocketException {
+    public UdpEchoServer(int port) throws SocketException {
         socket = new DatagramSocket();
     }
 
