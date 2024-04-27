@@ -28,10 +28,9 @@ import java.net.SocketException;
             // 2.根据请求计算响应(对于回显服务器来说，这一步啥都不用做)
 
             String request = new String(requestPacket.getData(), 0, requestPacket.getLength());
+            String response = process(request);
 
             // 3.把响应返回到客户端，
-
-            String response = process(request);
 
             DatagramPacket responsePacket = new DatagramPacket(response.getBytes(), response.getBytes().length,
                     requestPacket.getSocketAddress());
