@@ -12,8 +12,9 @@ public class UdpEchoServer {
         socket = new DatagramSocket(port);
     }
     public void start() throws IOException {
+        System.out.println("服务器启动!!!");
+
         while (true) {
-            System.out.println("服务器启动!!!");
             DatagramPacket requestPacket = new DatagramPacket(new byte[1024], 1024);
             socket.receive(requestPacket);
 
@@ -30,7 +31,7 @@ public class UdpEchoServer {
         }
     }
 
-    private String process(String request) {
+    public String process(String request) {
         if (request.equals("懂了")) {
             return "我也是";
         }
@@ -41,4 +42,5 @@ public class UdpEchoServer {
         UdpEchoServer server = new UdpEchoServer(9090);
         server.start();
     }
+
 }
