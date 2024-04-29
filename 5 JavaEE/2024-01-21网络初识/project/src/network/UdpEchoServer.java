@@ -1,10 +1,5 @@
 package network;
 
-public class UdpEchoServer {
-    public UdpEchoServer(int i) {
-    }
+class UdpEchoClient {
 
-    public static void main(String[] args) {
-
-    }
 }
