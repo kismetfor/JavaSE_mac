@@ -5,6 +5,9 @@ import java.net.*;
 import java.util.Scanner;
 
  class UdpEchoClient {
+	//Udp回显客户端
+	//指定服务器Ip和服务器端口号，方便联络
+	//不需要指定自己的IP和端口号 能够负责发就行了
     private DatagramSocket socket = null;
     private String serverIp;
     private int ServerPort;
@@ -41,6 +44,7 @@ import java.util.Scanner;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         UdpEchoClient client = new UdpEchoClient("127.0.0.1", 9090);
+//客户端需要指定端口号，不是给自己指定，而是指定要发送的客户端端口号，第一个参数为Ip地址
         client.start();
     }
 

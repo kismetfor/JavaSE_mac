@@ -6,14 +6,18 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 
 public class UdpEchoServer {
+    //算是单例模式中的懒汉模式
+    //不调用构造方法就不初始化一个对象
     DatagramSocket socket = null;
 
     public UdpEchoServer(int port) throws SocketException {
+        //服务器需要指定端口号,方便客户端找得到端口进行来连接
         socket = new DatagramSocket(port);
     }
     public void start() throws IOException {
         while (true) {
             System.out.println("服务器启动!!!");
+            //三种new DatagramPacket的方法, 这是用于接收信息的数据包, 因此给个空的方便存储
             DatagramPacket requestPacket = new DatagramPacket(new byte[4096], 4096);
             socket.receive(requestPacket);
 
