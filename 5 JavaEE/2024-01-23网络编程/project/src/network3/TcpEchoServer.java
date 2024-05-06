@@ -54,7 +54,9 @@ public class TcpEchoServer {
                     //这个方式不方便给返回的响应中添加换行符 \n
 //                    outputStream.write(response.getBytes(), 0, request.getBytes().length);
                     PrintWriter printWriter = new PrintWriter(outputStream);
-                    System.out.println(response);
+                    System.out.println(printWriter);
+                    //做个实验
+                    //123334
                 }
             } catch (IOException e) {
                 throw new IOException(e);
