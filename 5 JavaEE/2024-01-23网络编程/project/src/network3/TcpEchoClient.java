@@ -24,14 +24,16 @@ public class TcpEchoClient {
             Scanner scannerNetwork = new Scanner(inputStream);
             PrintWriter printWriter = new PrintWriter(outputStream);
             while (true) {
-                System.out.println("->");
+                System.out.print("->");
                 if (!scannerConsole.hasNext()) {
                     break;
                 }
                 String request = scannerConsole.next();
 
+
                 //这里和服务器的scanner.next呼应
                 printWriter.println(request);
+                printWriter.flush();
 
                 String response = scannerNetwork.next();
                 System.out.println(response);

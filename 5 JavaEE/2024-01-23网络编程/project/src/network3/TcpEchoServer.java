@@ -19,7 +19,7 @@ import java.util.Scanner;
 public class TcpEchoServer {
     private ServerSocket serverSocket = null;
     public TcpEchoServer(int port) throws IOException {
-        serverSocket = new ServerSocket();
+        serverSocket = new ServerSocket(port);
     }
 
     public void start() throws IOException{
@@ -56,8 +56,9 @@ public class TcpEchoServer {
                     //套上一层 这里PrintWriter相当于输入的Scanner 把输入流包装一下 完成更方便的写入
                     //方便完成更方便的输出
                     PrintWriter printWriter = new PrintWriter(outputStream);
-                    System.out.println(printWriter);
+                    printWriter.println(response);
 
+                    printWriter.flush();
                     System.out.printf("[%s:%d] req: %s resp: %s", clientSocket.getInetAddress(),clientSocket.getPort(),
                             request, response);
                 }
