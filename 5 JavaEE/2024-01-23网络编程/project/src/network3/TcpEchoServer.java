@@ -52,11 +52,14 @@ public class TcpEchoServer {
                     String response = process(request);
                     //3.把响应返回给客户端
                     //这个方式不方便给返回的响应中添加换行符 \n
-//                    outputStream.write(response.getBytes(), 0, request.getBytes().length);
+                    //  outputStream.write(response.getBytes(), 0, request.getBytes().length);
+                    //套上一层 这里PrintWriter相当于输入的Scanner 把输入流包装一下 完成更方便的写入
+                    //方便完成更方便的输出
                     PrintWriter printWriter = new PrintWriter(outputStream);
                     System.out.println(printWriter);
-                    //做个实验
-                    //123334
+
+                    System.out.printf("[%s:%d] req: %s resp: %s", clientSocket.getInetAddress(),clientSocket.getPort(),
+                            request, response);
                 }
             } catch (IOException e) {
                 throw new IOException(e);
@@ -67,5 +70,9 @@ public class TcpEchoServer {
         return request;
     }
 
+    public static void main(String[] args) throws IOException{
+        TcpEchoServer server = new TcpEchoServer(9090);
+        server.start();
+    }
 
 }
