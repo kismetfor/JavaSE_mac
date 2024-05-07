@@ -27,13 +27,21 @@ public class TcpEchoServer {
         while (true) {
             //accept接听电话 然后才能通信
             Socket clientSocket = serverSocket.accept();
-            processConnection(clientSocket);
+            Thread t = new Thread(()->{
+                try {
+                    processConnection(clientSocket);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            t.start();
         }
     }
 
     //通过这个方法建立连接 连接建立的过程就会涉及到多次的相应交互
     private void processConnection(Socket clientSocket) throws IOException{
         System.out.printf("[%s %d] 客户端上线", clientSocket.getInetAddress(), clientSocket.getPort());
+        System.out.println();
         //读取客户端的请求
             //TCP是面相字节流的.这里的字节流和文件中的字节流完全一致的.
             //使用和文件操作一样的类和方法完成针对 tcp socket的读写
@@ -43,6 +51,7 @@ public class TcpEchoServer {
                 while (true) {
                     if (!scanner.hasNext()) {
                         System.out.printf("[%s %d] 客户端下线 读取完毕",clientSocket.getInetAddress(), clientSocket.getPort());
+                        System.out.println();
                         break;
                     }
                     //1.读取请求并解析 next会读到空白符才会结束
@@ -61,6 +70,7 @@ public class TcpEchoServer {
                     printWriter.flush();
                     System.out.printf("[%s:%d] req: %s resp: %s", clientSocket.getInetAddress(),clientSocket.getPort(),
                             request, response);
+                    System.out.println();
                 }
             } catch (IOException e) {
                 throw new IOException(e);
