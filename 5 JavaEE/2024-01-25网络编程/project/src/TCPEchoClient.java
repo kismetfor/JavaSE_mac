@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class TCPEchoClient {
+    //有连接 可靠传输
     private Socket socket = null;
 
     public TCPEchoClient(String host, int port) throws IOException {
