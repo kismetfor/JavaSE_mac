@@ -17,9 +17,9 @@ class Solution {
         int ret = -1;
         if (target < 0) return ret;
         for (int right = 0, left = 0, sum = 0; right < nums.length; right++) {
-            if (sum == )
+//            if (sum == 1)
         }
-
+        return 1;
     }
     public int minOperations(int[] nums, int x) {
         int sum_nums = 0;
