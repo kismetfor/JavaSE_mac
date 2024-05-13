@@ -10,6 +10,17 @@ public class Main012_1 {
     }
 }
 class Solution {
+    public int minOperations1(int[] nums, int x) {
+        int sum1 = 0;
+        for(int a : nums) sum1 += a;
+        int target = sum1 - x;
+        int ret = -1;
+        if (target < 0) return ret;
+        for (int right = 0, left = 0, sum = 0; right < nums.length; right++) {
+            if (sum == )
+        }
+
+    }
     public int minOperations(int[] nums, int x) {
         int sum_nums = 0;
         for (int i = 0; i < nums.length; i++) {
