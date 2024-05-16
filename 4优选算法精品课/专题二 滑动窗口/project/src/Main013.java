@@ -10,7 +10,7 @@ public class Main013 {
         int[] fruits = {0,1,6,6,4,4,6};
 //        int[] fruits = {0,1,2};
         Solution1 solution = new Solution1();
-        System.out.println(solution.totalFruit3(fruits));
+        System.out.println(solution.totalFruit2(fruits));
     }
 }
 class Solution1 {
