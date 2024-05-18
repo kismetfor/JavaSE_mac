@@ -1,7 +1,9 @@
 package com.bite.springmvc.demos;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 @RequestMapping("/request")
 @RestController
@@ -26,5 +28,36 @@ public class RequestController {
     public String r4(String name, Integer age) {
         return "r4接收到参数, name = " + name+
                 " , 接收到参数, age = " + age;
+    }
+    @RequestMapping("r5")
+    public String r5(Student student) {
+        return "r5接收到参数  " + student.toString();
+    }
+    @RequestMapping("r6")
+    public String r6(@RequestParam("name") String username) {
+        return "r6接收到参数, name:  " + username;
+    }
+    @RequestMapping("r7")
+    public String r7(@RequestParam(value = "name", required = false) String username) {
+        return "r7接收到参数, name:  " + username;
+    }
+    @RequestMapping("r8")
+    public String r8(String[] array) {
+        return "r8接收到参数, array:  " + Arrays.toString(array);
+    }
+    @RequestMapping("r9")
+    public String r9(@RequestParam List<String> list) {
+        return "r9接收到参数, list:  " + list;
+    }
+    /**
+     * 接收JSON
+     */
+    @RequestMapping("r10")
+    public String r10(Student student) {
+        return "r10接收到参数, student:  " + student.toString();
+    }
+    @RequestMapping("r11")
+    public String r11(@RequestBody Student student) {
+        return "r11接收到参数, student:  " + student.toString();
     }
 }
