@@ -1,6 +1,7 @@
 package com.bite.springmvc.demos;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,5 +60,14 @@ public class RequestController {
     @RequestMapping("r11")
     public String r11(@RequestBody Student student) {
         return "r11接收到参数, student:  " + student.toString();
+    }
+    @RequestMapping("/article/{articleID}/{name}")
+    public String r12(@PathVariable("articleID") Integer articleID, @PathVariable("name") String name) {
+        return "r12接收到参数, articleID:  " + articleID+"  name: "+ name;
+    }
+    @RequestMapping("r13")
+    public String r13(@RequestPart("file") MultipartFile imgFile) {
+        String originalFileName = imgFile.getOriginalFilename();
+        return "r13接收到文件名:  " + originalFileName;
     }
 }
