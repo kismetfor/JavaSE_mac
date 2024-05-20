@@ -9,7 +9,7 @@ import java.util.List;
 @RequestMapping("/request")
 @RestController
 public class RequestController {
-    @RequestMapping("/hello")
+    @RequestMapping(value = "/hello" ,  method = RequestMethod.GET)
     public String say() {
         return "hello, spring mvc";
     }
@@ -70,4 +70,5 @@ public class RequestController {
         String originalFileName = imgFile.getOriginalFilename();
         return "r13接收到文件名:  " + originalFileName;
     }
+
 }
