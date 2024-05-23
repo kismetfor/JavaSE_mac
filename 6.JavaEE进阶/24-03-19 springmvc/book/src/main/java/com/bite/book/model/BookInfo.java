@@ -1,4 +1,4 @@
-package com.bite.book;
+package com.bite.book.model;
 
 import lombok.Data;
 

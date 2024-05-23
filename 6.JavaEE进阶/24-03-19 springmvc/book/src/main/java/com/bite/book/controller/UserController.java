@@ -1,4 +1,4 @@
-package com.bite.book;
+package com.bite.book.controller;
 
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
