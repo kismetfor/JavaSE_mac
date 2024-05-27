@@ -44,7 +44,8 @@ public class Main7 {
             }
         }
         while (true) {
-            if (headA.val == headB.val) {
+//            if (headA.val == headB.val) {
+            if (headA == headB) {
                 return headA;
             }
             if (headA.next == null || headB.next == null) return null;
