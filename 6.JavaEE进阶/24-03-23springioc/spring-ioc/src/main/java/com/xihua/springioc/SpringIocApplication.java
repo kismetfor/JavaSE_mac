@@ -62,8 +62,8 @@ public class SpringIocApplication {
 //        UController bean = context.getBean(UController.class);
 //        bean.sayHi();
 
-        UserController controller = (UserController)context.getBean("usercon");
-        controller.sayHi();
+//        UserController controller = (UserController)context.getBean("usercon");
+//        controller.sayHi();
     }
 
 }

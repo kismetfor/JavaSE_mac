@@ -1,6 +1,7 @@
 package com.bite.book.dao;
 
 import com.bite.book.model.BookInfo;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -11,11 +12,13 @@ import java.util.List;
 @Repository
 @Component
 public class BookDao {
+    @Value("${book.pages.num}")
+    private Integer num;
     public List<BookInfo> mockData() {
         List<BookInfo> bookInfos = new ArrayList<>();
 
         //mock数据
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < num; i++) {
             BookInfo bookInfo = new BookInfo();
             bookInfo.setId(i);
             bookInfo.setBookName("图书"+i);
