@@ -3,10 +3,12 @@ package com.bite.book.dao;
 import com.bite.book.model.BookInfo;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+@Repository
 @Component
 public class BookDao {
     public List<BookInfo> mockData() {

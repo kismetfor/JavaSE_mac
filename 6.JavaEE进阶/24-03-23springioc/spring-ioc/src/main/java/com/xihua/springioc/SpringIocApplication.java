@@ -5,6 +5,7 @@ import com.xihua.springioc.config.BeanConfig;
 import com.xihua.springioc.config.UserConfig;
 import com.xihua.springioc.controller.HelloController;
 import com.xihua.springioc.controller.UController;
+import com.xihua.springioc.controller.UserController;
 import com.xihua.springioc.model.UserInfo;
 import com.xihua.springioc.repo.UserRepo;
 import com.xihua.springioc.service.UserService;
@@ -55,9 +56,14 @@ public class SpringIocApplication {
 //        BeanConfig bean = context.getBean(BeanConfig.class);
 //        System.out.println(bean);
 
-        HelloController bean = context.getBean(HelloController.class);
-        bean.sayHi();
+//        HelloController bean = context.getBean(HelloController.class);
+//        bean.sayHi();
 
+//        UController bean = context.getBean(UController.class);
+//        bean.sayHi();
+
+        UserController controller = (UserController)context.getBean("usercon");
+        controller.sayHi();
     }
 
 }
