@@ -11,5 +11,6 @@ public interface UserInfoXmlMapper {
     Integer delete(Integer id);
     Integer update(String password);
     List<UserInfo> selectAllUsers();
+    List<UserInfo> selectAllUsers2();
     Integer selectCount();
 }

@@ -40,4 +40,9 @@ class UserInfoXmlMapperTest {
     void selectCount() {
         System.out.println("=========" + userInfoXmlMapper.selectCount());
     }
+
+    @Test
+    void selectAllUsers2() {
+        System.out.println("========" + userInfoXmlMapper.selectAllUsers2());
+    }
 }
