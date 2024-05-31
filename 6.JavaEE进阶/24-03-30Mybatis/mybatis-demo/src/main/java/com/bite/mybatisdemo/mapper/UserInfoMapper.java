@@ -53,6 +53,18 @@ public interface UserInfoMapper {
 
     @Select("SELECT * from userinfo")
     List<UserInfo> selectUserInfo3();
+    @Select("select * from userinfo where username = #{username}")
+    UserInfo getUserByName(String username);
+
+    @Select("select * from userinfo where username = '${username}'")
+    List<UserInfo> getUserByName2(String username);
+
+    @Select("select * from userinfo where id = #{id}")
+    UserInfo getUserByID(Integer id);
+
+    @Select("select * from userinfo where id = ${id}")
+    UserInfo getUserByID2(Integer id);
+
 
 
 }

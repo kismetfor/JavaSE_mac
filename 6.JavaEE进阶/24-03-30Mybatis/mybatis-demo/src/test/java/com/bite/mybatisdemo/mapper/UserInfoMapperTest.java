@@ -94,4 +94,28 @@ class UserInfoMapperTest {
     void selectUserInfo3() {
         System.out.println(userInfoMapper.selectUserInfo3());
     }
+
+    @Test
+    void getUserByName() {
+//        System.out.println(userInfoMapper.getUserByName("admin"));
+        System.out.println(userInfoMapper.getUserByName("' OR 1='1"));
+
+    }
+
+
+    @Test
+    void getUserByName2() {
+//        System.out.println(userInfoMapper.getUserByName2("admin"));
+        System.out.println(userInfoMapper.getUserByName2("' OR 1='1"));
+    }
+
+    @Test
+    void getUserByID() {
+        System.out.println(userInfoMapper.getUserByID(2));
+    }
+
+    @Test
+    void getUserByID2() {
+        System.out.println(userInfoMapper.getUserByID2(2));
+    }
 }
