@@ -27,4 +27,15 @@
         select * from userinfo;
     </select>
 
+<insert id="insertByCondition">
+    insert into userinfo (username, password, age
+    <if test="gender != null">
+        , gender
+    </if>
+    ) values (#{username}, #{password},#{age}
+    <if test="gender != null">
+        , #{gender}
+    </if>)
+</insert>
+
 </mapper>

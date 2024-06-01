@@ -45,4 +45,16 @@ class UserInfoXmlMapperTest {
     void selectAllUsers2() {
         System.out.println("========" + userInfoXmlMapper.selectAllUsers2());
     }
+
+    @Test
+    void insertByCondition() {
+        {
+            UserInfo userInfo = new UserInfo();
+            userInfo.setUsername("陈立");
+            userInfo.setPassword("212121");
+            userInfo.setAge(5);
+//            userInfo.setGender(1);
+            System.out.println(userInfoXmlMapper.insertByCondition(userInfo));
+        }
+    }
 }
