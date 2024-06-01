@@ -50,11 +50,31 @@ class UserInfoXmlMapperTest {
     void insertByCondition() {
         {
             UserInfo userInfo = new UserInfo();
-            userInfo.setUsername("陈立");
+            userInfo.setUsername("张宇小12");
             userInfo.setPassword("212121");
             userInfo.setAge(5);
 //            userInfo.setGender(1);
+            userInfo.setPhone("17713776557");
             System.out.println(userInfoXmlMapper.insertByCondition(userInfo));
         }
+    }
+
+    @Test
+    void selectUserByCondition() {
+        UserInfo userInfo = new UserInfo();
+//        userInfo.setAge(15);
+        userInfo.setGender(1);
+//        userInfo.setPhone();
+        System.out.println(userInfoXmlMapper.selectUserByCondition(userInfo));
+    }
+
+    @Test
+    void updateUserByCondition() {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setAge(15);
+        userInfo.setGender(1);
+        userInfo.setId(4);
+        userInfo.setPhone("12345678900");
+        System.out.println(userInfoXmlMapper.updateUserByCondition(userInfo));
     }
 }

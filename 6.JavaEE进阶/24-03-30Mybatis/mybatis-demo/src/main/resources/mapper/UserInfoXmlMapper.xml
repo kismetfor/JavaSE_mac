@@ -28,14 +28,58 @@
     </select>
 
 <insert id="insertByCondition">
-    insert into userinfo (username, password, age
+    insert into userinfo
+<trim prefix="(" suffix=")" suffixOverrides=",">
+     username, password, age,
     <if test="gender != null">
-        , gender
+        gender,
     </if>
-    ) values (#{username}, #{password},#{age}
-    <if test="gender != null">
-        , #{gender}
-    </if>)
+    <if test="phone != null">
+        phone,
+    </if>
+</trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        #{username}, #{password},#{age},
+        <if test="gender != null">
+            #{gender},
+        </if>
+        <if test="phone != null">
+            #{phone}
+        </if>
+    </trim>
 </insert>
 
+    <select id="selectUserByCondition" resultType="com.bite.mybatisdemo.model.UserInfo">
+        select *
+        from userinfo
+        <where>
+            <if test="age != null">
+                age  = #{age}
+            </if>
+            <if test="gender != null">
+                and gender  = #{gender}
+            </if>
+            <if test="deleteFlag != null">
+                and delete_flag  = #{deleteFlag}
+            </if>
+        </where>
+
+    </select>
+
+    <update id="updateUserByCondition">
+        update userinfo
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>
