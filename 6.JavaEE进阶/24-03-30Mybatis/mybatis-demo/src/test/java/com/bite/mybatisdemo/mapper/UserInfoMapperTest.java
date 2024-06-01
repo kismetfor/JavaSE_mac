@@ -118,4 +118,15 @@ class UserInfoMapperTest {
     void getUserByID2() {
         System.out.println(userInfoMapper.getUserByID2(2));
     }
+
+    @Test
+    void getUserByLikeName() {
+        System.out.println(userInfoMapper.getUserByLikeName("zhaoliu"));
+    }
+
+    @Test
+    void getUserByLikeName1() {
+        System.out.println(userInfoMapper.getUserByLikeName1("zhaoliu"));
+    }
+
 }

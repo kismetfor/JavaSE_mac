@@ -66,5 +66,9 @@ public interface UserInfoMapper {
     UserInfo getUserByID2(Integer id);
 
 
+    @Select("select * from userinfo where username like concat('%', #{username}, '%')")
+    List<UserInfo> getUserByLikeName(String username);
 
+    @Select("select * from userinfo where username like '%${username}%'")
+    List<UserInfo> getUserByLikeName1(String username);
 }

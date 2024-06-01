@@ -13,4 +13,5 @@ public interface UserInfoXmlMapper {
     List<UserInfo> selectAllUsers();
     List<UserInfo> selectAllUsers2();
     Integer selectCount();
+    Integer insertByCondition(UserInfo userInfo);
 }
