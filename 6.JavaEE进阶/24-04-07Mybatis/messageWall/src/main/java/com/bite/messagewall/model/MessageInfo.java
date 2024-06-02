@@ -1,4 +1,4 @@
-package com.bite.springmvc.demos.model;
+package com.bite.messagewall.model;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ public class MessageInfo {
     private Integer id;
     private String from;
     private String to;
-    private String say;
+    private String message;
     private Integer delete_flag;
     private Date create_time;
     private Date update_time;

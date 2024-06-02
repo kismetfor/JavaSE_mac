@@ -1,13 +1,13 @@
-package com.bite.springmvc.demos.mapper;
+package com.bite.messagewall.mapper;
 
-import com.bite.springmvc.demos.model.MessageInfo;
+import com.bite.messagewall.model.MessageInfo;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@MapperScan("com.bite.springmvc.demos.mapper")
+@MapperScan("com.bite.messagewall.mapper")
 class MessageInfoMapperTest {
     @Autowired
     private MessageInfoMapper messageInfoMapper;
@@ -16,7 +16,7 @@ class MessageInfoMapperTest {
         MessageInfo messageInfo = new MessageInfo();
         messageInfo.setFrom("徐涛");
         messageInfo.setTo("张雨潇");
-        messageInfo.setSay("fuck me");
+        messageInfo.setMessage("fuck me");
         messageInfoMapper.insertMessage(messageInfo);
     }
 
