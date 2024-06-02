@@ -1,4 +1,4 @@
-package com.bite.springmvc.demos;
+package com.bite.springmvc.demos.controller;
 
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
