@@ -64,8 +64,21 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script>
         function add() {
-            alert("添加成功");
-            location.href = "book_list.html";
+            $.ajax({
+                url: "/book/addBook",
+                type: "post",
+                data: $("#addBook").serialize(),
+                success: function() {
+                    if(result=="") {
+                        //添加成功
+                        location.href = "book_list.html";
+                    } else {
+                        alert(result);
+                    }
+                }
+            })
+
+
         }
     </script>
 </body>

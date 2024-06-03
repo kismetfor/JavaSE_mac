@@ -12,20 +12,18 @@ import java.util.List;
 @Repository
 @Component
 public class BookDao {
-    @Value("${book.pages.num}")
-    private Integer num;
+//    @Value("${book.pages.num}")
+//    private Integer num;
     public List<BookInfo> mockData() {
         List<BookInfo> bookInfos = new ArrayList<>();
 
         //mock数据
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < 10; i++) {
             BookInfo bookInfo = new BookInfo();
             bookInfo.setId(i);
             bookInfo.setBookName("图书"+i);
             bookInfo.setAuthor("作者"+i);
-            bookInfo.setNum(1+i*2);
             bookInfo.setPrice(new BigDecimal(i*3));
-            bookInfo.setPublishName("出版社"+i);
             if (i%5==0) {
                 bookInfo.setStatus(2);
 //                bookInfo.setStatusCN("可借阅");

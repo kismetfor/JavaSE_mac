@@ -3,6 +3,7 @@ package com.bite.book.model;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 public class BookInfo {
@@ -13,12 +14,14 @@ public class BookInfo {
     //	作者
     private String author;
     //	数量
-    private Integer num;
+    private Integer count;
     //	定价
     private BigDecimal price;
     //	出版社
-    private String publishName;
+    private String publish;
     //	状态
     private Integer status; //0--不可借阅 1--可借阅
     private String statusCN;
+    private Date createTime;
+    private Date updateTime;
 }
