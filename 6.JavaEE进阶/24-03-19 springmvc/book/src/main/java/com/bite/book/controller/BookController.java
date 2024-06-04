@@ -75,4 +75,16 @@ public class BookController {
             return "更新失败, 请联系管理员";
         }
     }
+    @RequestMapping("/deleteBook")
+    public String deleteBook(Integer bookID) {
+        log.info("删除图书, book: {}", bookID);
+        try {
+            Integer result = bookService.deleteBook(bookID);
+            if (result > 0) return "";
+            return "内部错误";
+        } catch (Exception e) {
+            log.error("发生错误, e: ", e);
+            return "删除失败, 请联系管理员";
+        }
+    }
 }
