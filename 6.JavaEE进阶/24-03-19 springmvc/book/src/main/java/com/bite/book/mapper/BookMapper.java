@@ -2,10 +2,7 @@ package com.bite.book.mapper;
 
 import com.bite.book.model.BookInfo;
 import com.bite.book.model.PageRequest;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -23,11 +20,17 @@ public interface BookMapper {
     /**
      *
      */
-    @Select("select * from book_info limit #{offset}, #{limit}")
+    //order by id desc
+    @Select("select * from book_info where status != 0 limit #{offset}, #{limit}")
     List<BookInfo> getBookListByPage(@Param("offset") Integer offset, @Param("limit") Integer limit);
 
-    @Select("select count(1) from book_info")
+    @Select("select count(1) from book_info where status != 0")
     Integer count();
+
+    @Select("select * from book_info where id = #{bookId}")
+    BookInfo queryBookById(@Param("bookId") Integer bookId);
+
+    Integer updateBookById(BookInfo bookInfo);
     /**
      * 删除书籍
      */

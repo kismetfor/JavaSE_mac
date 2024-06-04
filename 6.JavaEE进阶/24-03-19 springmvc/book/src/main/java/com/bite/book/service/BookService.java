@@ -1,6 +1,6 @@
 package com.bite.book.service;
 
-import com.bite.book.dao.BookDao;
+import com.bite.book.enums.BookStatus;
 import com.bite.book.mapper.BookMapper;
 import com.bite.book.model.BookInfo;
 import com.bite.book.model.PageRequest;
@@ -15,21 +15,7 @@ import java.util.List;
 @Component
 public class BookService {
     @Autowired
-    private BookDao bookDao;
-    @Autowired
     private BookMapper bookMapper;
-    public List<BookInfo> getBookList() {
-
-        List<BookInfo> bookInfos = bookDao.mockData();
-        for (BookInfo bookInfo:bookInfos) {
-            if (bookInfo.getStatus()==1) {
-                bookInfo.setStatusCN("可借阅");
-            } else {
-                bookInfo.setStatusCN("不可借阅");
-            }
-        }
-        return bookInfos;
-    }
 
     public Integer insertBook(BookInfo bookInfo) {
         return bookMapper.insert(bookInfo);
@@ -44,14 +30,18 @@ public class BookService {
         //4. 状态 0-删除 1-可借阅 2-不可借阅
         for (BookInfo bookInfo:
                 bookInfos) {
-            if (bookInfo.getStatus() == 1) {
-                bookInfo.setStatusCN("可借阅");
-            } else if (bookInfo.getStatus() == 0) {
-                bookInfo.setStatusCN("已删除");
-            } else {
-                bookInfo.setStatusCN("不可借阅");
-            }
+            bookInfo.setStatusCN(BookStatus.getDescByCode(bookInfo.getStatus()).getDesc());
         }
         return new PageResult<>(bookInfos, count);
+    }
+
+    public BookInfo queryBookById(Integer bookId) {
+        BookInfo bookInfo = bookMapper.queryBookById(bookId);
+        bookInfo.setStatusCN(BookStatus.getDescByCode(bookInfo.getStatus()).getDesc());
+        return bookInfo;
+    }
+
+    public Integer updateBook(BookInfo bookInfo) {
+        return bookMapper.updateBookById(bookInfo);
     }
 }

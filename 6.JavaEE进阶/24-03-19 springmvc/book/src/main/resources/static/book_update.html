@@ -59,10 +59,34 @@
     </div>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script>
-        
+        $.ajax({
+            url: "/book/queryBookById"+location.search,
+            type: "get",
+            success:function(book) {
+                $("#bookId").val(book.id);
+                $("#bookName").val(book.bookName);
+                $("#bookAuthor").val(book.author);
+                $("#bookStock").val(book.count);
+                $("#bookStatus").val(book.status);
+                $("#bookPrice").val(book.price);
+                $("#bookPublisher").val(book.publish);
+            }
+        });
         function update() {
-            alert("更新成功");
-            location.href = "book_list.html"
+            $.ajax({
+                url: "/book/updateBook",
+                type: "post",
+                //提交home表单
+                data: $("#updateBook").serialize(),
+                success: function(resopnse) {
+                    alert("更新成功");
+                    location.href = "book_list.html"
+                },
+                error: function(error) {
+                    alert("更新失败, 请重试");
+                }
+            });
+            
         }
     </script>
 </body>
