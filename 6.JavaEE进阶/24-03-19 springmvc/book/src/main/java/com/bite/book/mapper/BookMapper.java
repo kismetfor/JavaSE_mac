@@ -35,6 +35,6 @@ public interface BookMapper {
      * 批量删除书籍
      */
 
-    Integer batchDeleteByIds(List<Integer> ids);
+    Integer batchDeleteByIds(@Param("ids") List<Integer> ids);
 
 }

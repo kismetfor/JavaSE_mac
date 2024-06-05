@@ -150,6 +150,18 @@
                     });
                     console.log(ids);
                     // 这里添加批量删除图书的逻辑
+                    $.ajax({
+                        url: "/book/batchDeleteByIds?ids="+ids,
+                        type: "post",
+                        success:function(result) {
+                            if(result=="") {
+                                location.href = "book_list.html";
+                            } else {
+                                alert("图书删除失败");
+                            }
+                        }
+
+                    });
                     alert("批量删除成功");
                 }
             }
