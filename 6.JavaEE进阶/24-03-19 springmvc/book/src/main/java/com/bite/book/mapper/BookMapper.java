@@ -32,7 +32,9 @@ public interface BookMapper {
 
     Integer updateBookById(BookInfo bookInfo);
     /**
-     * 删除书籍
+     * 批量删除书籍
      */
+
+    Integer batchDeleteByIds(List<Integer> ids);
 
 }

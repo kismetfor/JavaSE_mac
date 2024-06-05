@@ -5,11 +5,12 @@ import com.bite.book.model.PageRequest;
 import com.bite.book.model.PageResult;
 import com.bite.book.service.BookService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Slf4j
@@ -75,8 +76,9 @@ public class BookController {
             return "更新失败, 请联系管理员";
         }
     }
-    @RequestMapping("/deleteBook")
-    public String deleteBook(Integer bookID) {
+
+    @RequestMapping("/deleteBook/{id}")
+    public String deleteBook(@PathVariable("id") Integer bookID) {
         log.info("删除图书, book: {}", bookID);
         try {
             Integer result = bookService.deleteBook(bookID);
@@ -85,6 +87,19 @@ public class BookController {
         } catch (Exception e) {
             log.error("发生错误, e: ", e);
             return "删除失败, 请联系管理员";
+        }
+    }
+    /**
+     * 批量删除
+     */
+    @RequestMapping("/batchDeleteBook")
+    public String batchDelete(@RequestParam List<Integer> ids) {
+        log.info("批量删除图书, ids: {}" , ids);
+        Integer result = bookService.batchDeleteBook(ids);
+        if (result > 0) {
+            return "";
+        } else {
+            return "内部错误";
         }
     }
 }

@@ -75,7 +75,7 @@
                             finalHtml += '<td>';
                             finalHtml += '<div class="op">';
                             finalHtml += '<a href="book_update.html?bookId=' + book.id + '">修改</a>';
-                            finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')">删除</a>';
+                            finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(\'' + book.id + '\')">删除</a>';
                             finalHtml += '</div>';
                             finalHtml += '</td>';
                             finalHtml += '</tr>';
@@ -106,14 +106,39 @@
                     }
                 });
             }
-
-            function deleteBook(id) {
-                var isDelete = confirm("确认删除?");
-                if (isDelete) {
-                    // 这里添加删除图书的逻辑
-                    alert("删除成功");
+    function deleteBook(id) {
+        console.log("书籍ID: ", id);
+        var isDelete = confirm("确认删除?");
+        if (isDelete) {
+        // 这里添加删除图书的逻辑
+            $.ajax({
+                url: "book/deleteBook/"+id,
+                type: "get",
+                // contentType: 'qpplication/json;charset=utf-8',
+                // data: {
+                //     bookId: id // 将书籍的ID作为数据发送到后端
+                // },
+                success: function(result) {
+                    // 处理成功响应
+                    if(result=="") {
+                        // location.href = "book_list.html"+ location.search;
+                        location.href = "book_list.html";
+                        alert("删除成功");
+                    } else{
+                        alert(result);
+                    }
+                    
+                    // 在这里添加刷新图书列表的逻辑，可以重新调用获取图书列表的函数
+                    // getBookList(pageNum);
+                },
+                error: function(xhr, status, error) {
+                    // 处理错误情况
+                    console.error("Error:", error);
+                    alert("删除失败，请稍后再试。");
                 }
-            }
+        });
+    }
+}
 
             function batchDelete() {
                 var isDelete = confirm("确认批量删除?");

@@ -26,4 +26,12 @@
         where id = #{id}
     </update>
 
+    <delete id="batchDeleteByIds">
+        update book_info set status = 0
+        where id in
+        <foreach collection="list" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
 </mapper>
