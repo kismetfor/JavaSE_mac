@@ -46,7 +46,6 @@ public class BookController {
         } catch (Exception e) {
             log.info("捕捉异常信息 e: ", e);
         }
-
         return "添加失败";
     }
 
