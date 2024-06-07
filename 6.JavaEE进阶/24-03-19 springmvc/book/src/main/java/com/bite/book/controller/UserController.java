@@ -1,5 +1,6 @@
 package com.bite.book.controller;
 
+import com.bite.book.constant.Constants;
 import com.bite.book.model.UserInfo;
 import com.bite.book.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class UserController {
             return "密码错误";
         }
 
-        session.setAttribute("userName", userName);
+        session.setAttribute(Constants.USER_SESSION_KEY, userInfo);
         return "";
     }
 }

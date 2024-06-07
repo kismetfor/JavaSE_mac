@@ -1,16 +1,18 @@
 package com.bite.book.controller;
 
-import com.bite.book.model.BookInfo;
-import com.bite.book.model.PageRequest;
-import com.bite.book.model.PageResult;
+import com.bite.book.constant.Constants;
+import com.bite.book.enums.ResultStatus;
+import com.bite.book.model.*;
 import com.bite.book.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
+import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -53,9 +55,21 @@ public class BookController {
      * 查询图书列表
      */
     @RequestMapping("/getBookListByPage")
-    public PageResult<BookInfo> getBookListByPage(PageRequest pageRequest) {
+    public Result<PageResult<BookInfo>> getBookListByPage(PageRequest pageRequest, HttpSession session) {
         log.info("查询图书列表 pageRequest: {}", pageRequest);
-        return bookService.getBookListByPage(pageRequest);
+
+        UserInfo loginUserInfo = (UserInfo)session.getAttribute(Constants.USER_SESSION_KEY);
+        if (loginUserInfo == null || loginUserInfo.getId() < 0) {
+            Result result = new Result();
+            result.setCode(ResultStatus.NOLOGIN);
+            result.setErrMsg("用户未登录");
+            return result;
+        }
+        PageResult<BookInfo> bookListByPage = bookService.getBookListByPage(pageRequest);
+        Result result = new Result();
+        result.setCode(ResultStatus.SUCCESS);
+        result.setData(bookListByPage);
+        return result;
     }
 
     @RequestMapping("/queryBookById")
