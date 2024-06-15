@@ -36,7 +36,8 @@ public class UserController {
             return "密码错误";
         }
 
-        session.setAttribute(Constants.USER_SESSION_KEY, userInfo);
+        session.setAttribute(Constants.USER_SESSION_KEY
+                , userInfo);
         return "";
     }
 }

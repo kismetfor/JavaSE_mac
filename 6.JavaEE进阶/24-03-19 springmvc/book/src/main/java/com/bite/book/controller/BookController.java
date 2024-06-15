@@ -66,10 +66,11 @@ public class BookController {
             return result;
         }
         PageResult<BookInfo> bookListByPage = bookService.getBookListByPage(pageRequest);
-        Result result = new Result();
-        result.setCode(ResultStatus.SUCCESS);
-        result.setData(bookListByPage);
-        return result;
+//        Result result = new Result();
+//        result.setCode(ResultStatus.SUCCESS);
+//        result.setData(bookListByPage);
+//        return result;
+        return Result.success(bookListByPage);
     }
 
     @RequestMapping("/queryBookById")
