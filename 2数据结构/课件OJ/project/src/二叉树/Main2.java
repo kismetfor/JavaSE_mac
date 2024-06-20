@@ -1,10 +1,11 @@
 package 二叉树;
 
-
-
-public class Main1 {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        return isSame(p,q);
+//572. 另一棵树的子树
+public class Main2 {
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        isSame(root, subRoot);
+        isSame(root.left,subRoot);
+        isSame(root.right,subRoot);
     }
     public boolean isSame(TreeNode p, TreeNode q) {
         if (p != null && q != null) {
@@ -24,19 +25,7 @@ public class Main1 {
             return true;
         }
     }
-
     public static void main(String[] args) {
-        Main1 main1 = new Main1();
-        TreeNode p = main1.chushi();
-        TreeNode q = main1.chushi();
-        main1.isSameTree(p,q);
-    }
-    public TreeNode chushi() {
-        TreeNode head = new TreeNode(1);
-        TreeNode a = new TreeNode(2);
-        TreeNode b = new TreeNode(3);
-        head.left = a;
-        head.right = b;
-        return head;
+
     }
 }
