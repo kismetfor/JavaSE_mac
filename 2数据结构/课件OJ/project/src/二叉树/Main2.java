@@ -3,9 +3,7 @@ package 二叉树;
 //572. 另一棵树的子树
 public class Main2 {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        isSame(root, subRoot);
-        isSame(root.left,subRoot);
-        isSame(root.right,subRoot);
+
     }
     public boolean isSame(TreeNode p, TreeNode q) {
         if (p != null && q != null) {
