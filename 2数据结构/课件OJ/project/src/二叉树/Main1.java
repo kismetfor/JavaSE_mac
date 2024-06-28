@@ -3,6 +3,21 @@ package 二叉树;
 
 
 public class Main1 {
+    /**
+     * O(m*n)
+     * @param root
+     * @param subRoot
+     * @return
+     */
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        if (root==null) {
+            return false;
+        }
+      if (isSameTree(root, subRoot)) {
+                return true;
+            }
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    }
     public boolean isSameTree(TreeNode p, TreeNode q) {
         return isSame(p,q);
     }
