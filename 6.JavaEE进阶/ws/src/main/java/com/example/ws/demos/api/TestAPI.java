@@ -16,6 +16,8 @@ public class TestAPI extends TextWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         System.out.println("收到消息 "+ message.getPayload());
+        session.sendMessage(message);
+        System.out.println("发送消息 " +message.getPayload());
     }
 
     @Override
