@@ -51,7 +51,14 @@ public class UserAPI {
     @PostMapping("/userInfo")
     @ResponseBody
     public Object getUserInfo(HttpServletRequest request) {
-        HttpSession httpSession = request.getSession(false);
-        User user = (User) httpSession.getAttribute("user");
+        try {
+            HttpSession httpSession = request.getSession(false);
+            User user = (User) httpSession.getAttribute("user");
+            return user;
+        } catch (NullPointerException e) {
+            return new User();
+        }
+
+
     }
 }
