@@ -20,7 +20,7 @@ public class UserAPI {
         //关键操作: 根据username去数据库查询
         // 如果能找到匹配的用户并且密码一致, 就确认为登陆成功
         User user = userMapper.selectByName(username);
-        if (user != null || !user.getPassword().equals(password)) {
+        if (user == null || !user.getPassword().equals(password)) {
             return new User(); //这是空对象 说明登录失败
         }
         //这里的true表示如果会话存在, 那么返回session, 不存在创建一个新的会话返回
@@ -58,7 +58,5 @@ public class UserAPI {
         } catch (NullPointerException e) {
             return new User();
         }
-
-
     }
 }
