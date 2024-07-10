@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>登录</title>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <div class="nav">
         五子棋对战
     </div>
-    
+
     <div class="login-container">
         <!-- 登录界面对话框 -->
         <div class="login-dialog">
@@ -25,8 +26,51 @@
                 <input type="password" id="password">
             </div>
             <!-- 提交按钮 -->
-            <button id="submit">提交</button>
+            <div class="button-container">
+                <button id="submit">提交</button>
+            </div>
         </div>
     </div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        let usernameInput = document.querySelector('#username');
+        let passwordInput = document.querySelector('#password');
+        let submitButton = document.querySelector('#submit');
+        submitButton.onclick = function() {
+            // 禁用提交按钮，避免重复提交
+            submitButton.disabled = true;
+            $.ajax({
+                type: 'post',
+                url: '/login',
+                data: {
+                    username: usernameInput.value,
+                    password: passwordInput.value,
+                },
+                success: function(body) {
+                    // 请求执行成功之后的回调函数
+                    // 判定当前是否登录成功~
+                    // 如果登录成功, 服务器会返回当前的 User 对象.
+                    // 如果登录失败, 服务器会返回一个空的 User 对象.
+                    if (body && body.userId > 0) {
+                        // 登录成功
+                        alert("登录成功!");
+                        // 重定向跳转到 "游戏大厅页面".
+                        location.assign('/game_hall.html');
+                    } else {
+                        alert("登录失败!, 请检查密码是否正确");
+                    }
+                },
+                error: function() {
+                    // 请求执行失败之后的回调函数
+                    alert("登录失败!");
+                },
+                complete: function() {
+                    //AJAX请求完成后重新启用按钮
+                    submitButton.disabled = false;
+                }
+            });
+        }
+    </script>
 </body>
 </html>
