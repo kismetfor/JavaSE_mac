@@ -1,5 +1,7 @@
+
 .login-container {
     height: calc(100% - 50px);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,6 +37,7 @@
 #username, #password {
     width: 200px;
     height: 40px;
+
     font-size: 20px;
     line-height: 40px;
     padding-left: 10px;
@@ -43,46 +46,20 @@
     border-radius: 10px;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
 #submit {
     width: 300px;
     height: 50px;
+
     background-color: rgb(0, 128, 0);
     color: white;
+
     border: none;
     outline: none;
     border-radius: 10px;
+
     margin-top: 20px;
 }
 
 #submit:active {
     background-color: #666;
-}
-
-/* 公共的样式 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* 设置图片能够覆盖全部窗口 */
-html, body {
-    height: 100%;
-    background-image: url(../image/background.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.nav {
-    height: 50px;
-    background-color: rgb(50, 50, 50);
-    color: aliceblue;
-    line-height: 50px;
-    padding-left: 20px;
 }
