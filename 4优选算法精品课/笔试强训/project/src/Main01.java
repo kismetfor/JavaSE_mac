@@ -10,7 +10,11 @@ public class Main01 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
-        System.out.print(s.charAt(0));
+        if (Character.isLowerCase(s.charAt(0))) {
+            System.out.print(Character.toUpperCase(s.charAt(0)));
+        } else {
+            System.out.print(s.charAt(0));
+        }
         int i = 1;
         while (i < s.length()) {
             if (s.charAt(i) == ' ') {

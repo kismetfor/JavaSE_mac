@@ -1,53 +1,76 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
-public class Main02 {
-    static class minLength {
-        int length;
-        int start;
-        int end;
-
-        public minLength(int x) {
-            length = x;
-            start = 0;
-            end = x-1;
+class Read // 自定义快速读入
+{
+    StringTokenizer st = new StringTokenizer("");
+    BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+    String next() throws IOException
+    {
+        while(!st.hasMoreTokens())
+        {
+            st = new StringTokenizer(bf.readLine());
         }
+        return st.nextToken();
     }
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int x = scanner.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = scanner.nextInt();
+
+    String nextLine() throws IOException
+    {
+        return bf.readLine();
+    }
+
+    int nextInt() throws IOException
+    {
+        return Integer.parseInt(next());
+    }
+
+    long nextLong() throws IOException
+    {
+        return Long.parseLong(next());
+    }
+
+    double nextDouble() throws IOException
+    {
+        return Double.parseDouble(next());
+    }
+}
+public class Main02 {
+
+    public static void main(String[] args) throws IOException{
+        Read in = new Read();
+
+        int n = in.nextInt();
+        int x = in.nextInt();
+        int[] a = new int[n+1];
+        for (int i = 1; i <= n; i++) {
+            a[i] = in.nextInt();
         }
 
-        int left = 0;
-        int right = 0;
-        int sum = a[right];
-        minLength minL = new minLength(n);
+        int minlength = n;
+        int start = 1;
+        int end = n;
 
-        while (right < n-1) { //后续修改条件
-            while (sum < x && right < n-1) { //进窗口
-                sum += a[++right];
-            }
+        int left = 1;
+        int right = 1;
+        int sum = 0;
 
-            while (left <= right && sum >= x) { //出窗口
-                if (right-left+1 < minL.length) { //记录
-                    minL.length = right-left+1;
-                    minL.start = left + 1;
-                    minL.end = right + 1;
+        while (right <= n) { //后续修改条件
+            sum += a[right]; //进窗口
+
+            while (sum >= x) { //出窗口
+                if (right-left+1 < minlength) { //记录
+                    minlength = right-left+1;
+                    start = left;
+                    end = right;
                 }
-                sum -= a[++left];
+                sum -= a[left++];
             }
+            right++;
         }
-        while (left <= right && sum >= x) { //出窗口
-            if (right-left+1 < minL.length) { //记录
-                minL.length = right-left+1;
-                minL.start = left + 1;
-                minL.end = right + 1;
-            }
-            sum -= a[++left];
-        }
-        System.out.println(minL.start+" "+ minL.end);
+
+        System.out.println(start+" "+ end);
     }
 }
