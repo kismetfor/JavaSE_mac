@@ -65,7 +65,7 @@ public class UserAPI {
             HttpSession httpSession = request.getSession(false);
             User user = (User) httpSession.getAttribute("user");
             User newUser = userMapper.selectByName(user.getUsername());
-            return user;
+            return newUser;
         } catch (NullPointerException e) {
             return new User();
         }
