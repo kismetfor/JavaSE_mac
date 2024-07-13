@@ -28,7 +28,7 @@ public class RoomManager {
 //    public User getUserIdByRoomId(String roomId) {
 //        return rooms.get(roomId);
 //    }
-    public Room getRoomIdByUserId(String userId) {
+    public Room getRoomIdByUserId(int userId) {
         String roomId= userIdByRoomId.get(userId);
         if (roomId== null) {
             return null;

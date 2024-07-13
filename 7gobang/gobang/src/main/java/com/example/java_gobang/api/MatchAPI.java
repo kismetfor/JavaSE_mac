@@ -33,13 +33,15 @@ public class MatchAPI extends TextWebSocketHandler {
 
         try {
             User user = (User)session.getAttributes().get("user");
-            WebSocketSession tmpSession = onlineUserManager.getFromGameHall(user.getUserId());
-            if (tmpSession != null) {
+//            WebSocketSession tmpSession = onlineUserManager.getFromGameHall(user.getUserId());
+            if (onlineUserManager.getFromGameRoom(user.getUserId()) != null
+                    || onlineUserManager.getFromGameHall(user.getUserId()) != null) { //多开的 账户多处登录的
                 MatchResponse response = new MatchResponse();
-                response.setOk(false);
+                response.setOk(true);
                 response.setReason("账号已经在其他地方登陆了!!!");
+                 response.setMessage("repeatConnection");
                 session.sendMessage(new TextMessage(objectMapper.writeValueAsString(response)));
-                session.close();
+
                 return;
             }
             //把玩家设置为在线状态
@@ -97,18 +99,18 @@ public class MatchAPI extends TextWebSocketHandler {
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         try {
-            User user = (User)session.getAttributes().get("user");
+            // 玩家下线, 从 OnlineUserManager 中删除
+            User user = (User) session.getAttributes().get("user");
             WebSocketSession tmpSession = onlineUserManager.getFromGameHall(user.getUserId());
-            //tmpSession是存好的上面的会话 session表示参数传入的当前会话
-            //如果不一样的话 就不能给已经连接好的断开连接
             if (tmpSession == session) {
                 onlineUserManager.exitGameHall(user.getUserId());
-
             }
-            System.out.println("玩家"+user.getUsername()+"离开游戏大厅");
+            // 如果玩家正在匹配中, 而 websocket 连接断开了, 就应该移除匹配队列
+            matcher.remove(user);
         } catch (NullPointerException e) {
             System.out.println("[MatchAPI.afterConnectionClosed] 当前用户未登录!");
-        }
+            // e.printStackTrace();
 
+        }
     }
 }
