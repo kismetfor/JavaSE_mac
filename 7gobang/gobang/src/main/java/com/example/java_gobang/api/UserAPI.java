@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
 public class UserAPI {
-    @Autowired
+    //@Autowired注入方式：默认按类型注入（by type）。
+    //@Resource注入方式：默认按名称注入（by name）。
+    //如果找不到名称匹配的 bean，会回退到按类型注入（by type）。
+    @Resource
     private UserMapper userMapper;
     @PostMapping("/login")
     @ResponseBody
