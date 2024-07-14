@@ -93,7 +93,24 @@ public class MatchAPI extends TextWebSocketHandler {
 
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-        super.handleTransportError(session, exception);
+        try {
+            // 玩家下线, 从 OnlineUserManager 中删除
+            User user = (User) session.getAttributes().get("user");
+            WebSocketSession tmpSession = onlineUserManager.getFromGameHall(user.getUserId());
+            if (tmpSession == session) {
+                onlineUserManager.exitGameHall(user.getUserId());
+            }
+            // 如果玩家正在匹配中, 而 websocket 连接断开了, 就应该移除匹配队列
+            matcher.remove(user);
+        } catch (NullPointerException e) {
+            System.out.println("[MatchAPI.handleTransportError] 当前用户未登录!");
+//            e.printStackTrace();
+
+//            MatchResponse response = new MatchResponse();
+//            response.setOk(false);
+//            response.setReason("您尚未登录! 不能进行后续匹配功能!");
+//            session.sendMessage(new TextMessage(objectMapper.writeValueAsString(response)));
+        }
     }
 
     @Override

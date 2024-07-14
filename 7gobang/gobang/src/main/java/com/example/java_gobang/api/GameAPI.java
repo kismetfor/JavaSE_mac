@@ -35,19 +35,22 @@ public class GameAPI extends TextWebSocketHandler {
         Room room = roomManager.getRoomIdByUserId(user.getUserId());
         if (room == null) { //匹配未成功进来的
             response.setOk(false);
-            response.setMessage("当前用户尚未匹配成功");
+            response.setReason("当前用户尚未匹配成功");
+            String json = objectMapper.writeValueAsString(response);
+            session.sendMessage(new TextMessage(json));
             return;
         }
         if (onlineUserManager.getFromGameRoom(user.getUserId()) != null
         || onlineUserManager.getFromGameHall(user.getUserId()) != null) { //多开的 账户多处登录的
             response.setOk(false);
+            response.setReason("repeatConnection");
             response.setMessage("当前禁止多开");
             session.sendMessage(new TextMessage(objectMapper.writeValueAsString(response)));
             return;
         }
 
         //设置玩家上线
-        onlineUserManager.enterGameHall(user.getUserId(), session);
+        onlineUserManager.enterGameRoom(user.getUserId(), session);
         synchronized (room) {
             if (room.getUser1() == null) {
                 room.setUser1(user);
@@ -58,7 +61,7 @@ public class GameAPI extends TextWebSocketHandler {
             }
 
             if (room.getUser2() == null) {
-                room.setUser1(user);
+                room.setUser2(user);
                 System.out.println("玩家 "+user.getUsername()+" 已经准备就绪");
                 // 当两个玩家都加入成功之后, 就要让服务器, 给这两个玩家都返回 websocket 的响应数据.
                 // 通知这两个玩家说, 游戏双方都已经准备好了.
@@ -99,10 +102,13 @@ public class GameAPI extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         User user = (User) session.getAttributes().get("user");
         if (user == null) {
+            //加点日志
+            System.out.println("[handleTextMessage] 当前玩家尚未登录! ");
             return;
         }
         Room room = roomManager.getRoomIdByUserId(user.getUserId());
-        room
+        //下棋
+        room.putChess(message.getPayload());
     }
 
     @Override
