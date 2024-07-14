@@ -51,7 +51,7 @@ public class Matcher {
         }
     }
 
-    //玩家点击停止匹配 将玩家移除匹配队列
+    // 将玩家移除匹配队列
     public void remove(User user) {
         if (user.getScore() < 2000) {
             synchronized (normalQueue) {
