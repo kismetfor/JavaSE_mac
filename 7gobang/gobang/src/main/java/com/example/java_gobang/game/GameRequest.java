@@ -1,5 +1,5 @@
 package com.example.java_gobang.game;
-//落子响应
+//落子请求
 public class GameRequest {
     private String message;
     private int userId;

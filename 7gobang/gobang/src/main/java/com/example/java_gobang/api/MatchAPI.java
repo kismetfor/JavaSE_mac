@@ -62,7 +62,6 @@ public class MatchAPI extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        try {
             // 玩家下线, 从 OnlineUserManager 中删除
             User user = (User) session.getAttributes().get("user");
             String payload = message.getPayload();
@@ -86,9 +85,7 @@ public class MatchAPI extends TextWebSocketHandler {
             String jsonString = objectMapper.writeValueAsString(response);
             session.sendMessage(new TextMessage(jsonString));
 
-        } catch (NullPointerException e) {
-            System.out.println("[MatchAPI.handleTextMessage] 当前用户未登录!");
-        }
+
     }
 
     @Override
