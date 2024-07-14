@@ -153,10 +153,10 @@ public class Matcher {
                 session1.sendMessage(new TextMessage(json1));
 
                 MatchResponse response2 = new MatchResponse();
-                response1.setOk(true);
-                response1.setMessage("matchSuccess");
+                response2.setOk(true);
+                response2.setMessage("matchSuccess");
                 String json2 = objectMapper.writeValueAsString(response2);
-                session1.sendMessage(new TextMessage(json2));
+                session2.sendMessage(new TextMessage(json2));
 
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
