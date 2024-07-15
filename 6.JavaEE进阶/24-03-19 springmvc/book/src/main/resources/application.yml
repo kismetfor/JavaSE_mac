@@ -1,0 +1,16 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mybatis_test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 3345576297ltLT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true # 驼峰命名法
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 设置日志实现
+  mapper-locations: classpath:mapper/*Mapper.xml
+logging:
+  file:
+    name: spring-book.log # 日志文件名

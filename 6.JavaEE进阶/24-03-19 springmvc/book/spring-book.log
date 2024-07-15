@@ -1,0 +1,73 @@
+2024-06-06 16:25:15.821  INFO 7652 --- [main] com.bite.book.BookApplication            : Starting BookApplication using Java 17.0.9 on iMac-Pro.local with PID 7652 (/Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book/target/classes started by rain in /Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book)
+2024-06-06 16:25:15.828  INFO 7652 --- [main] com.bite.book.BookApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-06-06 16:25:16.687  INFO 7652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-06 16:25:16.696  INFO 7652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-06 16:25:16.696  INFO 7652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-06-06 16:25:16.775  INFO 7652 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-06 16:25:16.775  INFO 7652 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 901 ms
+2024-06-06 16:25:17.191  INFO 7652 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-06-06 16:25:17.281  INFO 7652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-06-06 16:25:17.288  INFO 7652 --- [main] com.bite.book.BookApplication            : Started BookApplication in 1.87 seconds (JVM running for 2.217)
+2024-06-06 16:38:37.634  INFO 23103 --- [main] com.bite.book.BookApplication            : Starting BookApplication using Java 17.0.9 on iMac-Pro.local with PID 23103 (/Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book/target/classes started by rain in /Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book)
+2024-06-06 16:38:37.637  INFO 23103 --- [main] com.bite.book.BookApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-06-06 16:38:38.793  INFO 23103 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-06 16:38:38.806  INFO 23103 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-06 16:38:38.807  INFO 23103 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-06-06 16:38:38.891  INFO 23103 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-06 16:38:38.892  INFO 23103 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1205 ms
+2024-06-06 16:38:39.416  INFO 23103 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-06-06 16:38:39.585  INFO 23103 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-06-06 16:38:39.595  INFO 23103 --- [main] com.bite.book.BookApplication            : Started BookApplication in 2.474 seconds (JVM running for 2.847)
+2024-06-06 16:38:42.384  INFO 23103 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-06 16:38:42.385  INFO 23103 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-06 16:38:42.386  INFO 23103 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-06 16:38:43.674  INFO 23103 --- [http-nio-8080-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-06 16:38:43.860  INFO 23103 --- [http-nio-8080-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-06 16:38:44.149  INFO 23103 --- [http-nio-8080-exec-5] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 16:38:48.833  INFO 23103 --- [http-nio-8080-exec-2] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=2, pageSize=10, offset=10)
+2024-06-06 16:41:32.734  INFO 23103 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-06 16:41:32.743  INFO 23103 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-06 17:37:30.598  INFO 93251 --- [main] com.bite.book.BookApplication            : Starting BookApplication using Java 17.0.9 on iMac-Pro.local with PID 93251 (/Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book/target/classes started by rain in /Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book)
+2024-06-06 17:37:30.602  INFO 93251 --- [main] com.bite.book.BookApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-06-06 17:37:31.471  INFO 93251 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-06 17:37:31.480  INFO 93251 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-06 17:37:31.481  INFO 93251 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-06-06 17:37:31.545  INFO 93251 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-06 17:37:31.546  INFO 93251 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 896 ms
+2024-06-06 17:37:31.971  INFO 93251 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-06-06 17:37:32.065  INFO 93251 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-06-06 17:37:32.073  INFO 93251 --- [main] com.bite.book.BookApplication            : Started BookApplication in 1.906 seconds (JVM running for 2.258)
+2024-06-06 17:37:41.545  INFO 93251 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-06 17:37:41.546  INFO 93251 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-06 17:37:41.547  INFO 93251 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-06 17:37:41.785  INFO 93251 --- [http-nio-8080-exec-2] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 17:37:41.808  INFO 93251 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-06 17:37:42.056  INFO 93251 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-06 17:37:55.305  INFO 93251 --- [http-nio-8080-exec-5] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 17:38:40.315  INFO 93251 --- [http-nio-8080-exec-8] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 17:39:19.725  INFO 93251 --- [http-nio-8080-exec-10] com.bite.book.controller.BookController  : 批量删除图书, ids: [7, 8]
+2024-06-06 17:39:27.577  INFO 93251 --- [http-nio-8080-exec-2] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 17:41:04.788  INFO 93251 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-06 17:41:04.795  INFO 93251 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-06 17:41:07.029  INFO 97537 --- [main] com.bite.book.BookApplication            : Starting BookApplication using Java 17.0.9 on iMac-Pro.local with PID 97537 (/Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book/target/classes started by rain in /Users/rain/Desktop/就业课/6.JavaEE进阶/24-03-19 springmvc/book)
+2024-06-06 17:41:07.031  INFO 97537 --- [main] com.bite.book.BookApplication            : No active profile set, falling back to 1 default profile: "default"
+2024-06-06 17:41:07.807  INFO 97537 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-06 17:41:07.816  INFO 97537 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-06 17:41:07.817  INFO 97537 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-06-06 17:41:07.880  INFO 97537 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-06 17:41:07.880  INFO 97537 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 809 ms
+2024-06-06 17:41:08.254  INFO 97537 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-06-06 17:41:08.348  INFO 97537 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-06-06 17:41:08.356  INFO 97537 --- [main] com.bite.book.BookApplication            : Started BookApplication in 1.715 seconds (JVM running for 2.006)
+2024-06-06 17:41:14.696  INFO 97537 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-06 17:41:14.696  INFO 97537 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-06 17:41:14.697  INFO 97537 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-06 17:41:14.856  INFO 97537 --- [http-nio-8080-exec-2] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 17:41:14.876  INFO 97537 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-06 17:41:15.018  INFO 97537 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-06 17:41:19.220  INFO 97537 --- [http-nio-8080-exec-3] com.bite.book.controller.BookController  : 批量删除图书, ids: [11, 12]
+2024-06-06 17:41:20.705  INFO 97537 --- [http-nio-8080-exec-5] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 17:41:21.246  INFO 97537 --- [http-nio-8080-exec-7] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 20:23:21.066  INFO 97537 --- [http-nio-8080-exec-1] com.bite.book.controller.BookController  : 查询图书列表 pageRequest: PageRequest(pageNum=1, pageSize=10, offset=0)
+2024-06-06 20:25:05.389  INFO 97537 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-06 20:25:05.391  INFO 97537 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

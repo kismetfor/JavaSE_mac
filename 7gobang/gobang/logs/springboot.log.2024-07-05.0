@@ -1,0 +1,8 @@
+2024-07-05 16:06:51.887  INFO 65257 --- [main] c.example.java_gobang.GobangApplication  : Starting GobangApplication using Java 1.8.0_392 on iMac-Pro.local with PID 65257 (/Users/rain/Desktop/就业课/7gobang/gobang/target/classes started by rain in /Users/rain/Desktop/就业课/7gobang/gobang)
+2024-07-05 16:06:51.889  INFO 65257 --- [main] c.example.java_gobang.GobangApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-07-05 16:06:52.301  WARN 65257 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example.java_gobang]' package. Please check your configuration.
+2024-07-05 16:06:52.523  INFO 65257 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-07-05 16:06:52.531  INFO 65257 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-05 16:06:52.531  INFO 65257 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2024-07-05 16:06:52.593  INFO 65257 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-05 16:06:52.593  INFO 65257 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 675 ms
