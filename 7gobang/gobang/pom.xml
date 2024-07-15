@@ -68,7 +68,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.example.java_gobang.GobangApplication</mainClass>
-                    <skip>true</skip>
+<!--                    <skip>true</skip>-->
                 </configuration>
                 <executions>
                     <execution>
