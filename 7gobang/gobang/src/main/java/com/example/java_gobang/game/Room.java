@@ -79,6 +79,7 @@ public class Room {
         }
         // 把响应构造成 JSON 字符串, 通过 session 进行传输.
         String respJSON = objectMapper.writeValueAsString(response);
+
         if (session1 != null) {
             session1.sendMessage(new TextMessage(respJSON));
         }
